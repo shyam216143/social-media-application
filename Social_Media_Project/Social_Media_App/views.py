@@ -2,13 +2,18 @@ from email.mime import image
 from re import I
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import profile
+from .models import posting, profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 @login_required(login_url='signin')
 def home(request):
-    return render(request,"index.html")
+    user_object = User.objects.get(username = request.user.username)
+    print(user_object.first_name)
+    user_profile = profile.objects.get(user = user_object)
+    print(user_profile.profile_img)
+    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object})
+
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -111,6 +116,22 @@ def settings(request):
 
 def example(request):
     return render(request, "signin.html") 
+
+@login_required(login_url='signin')
+def upload_post(request):
+    if request.method =='POST':
+        user = request.user.username
+        image = request.FILES.get('image_upload')
+        caption = request.POST['caption']
+
+        post = posting.objects.create(user=user, image=image,caption=caption)
+        post.save()
+
+        return redirect('/')
+    else:
+        return redirect('/')
+    return HttpResponse("Hi my patner")
+
 
 @login_required(login_url='signin')
 def signout(request):
