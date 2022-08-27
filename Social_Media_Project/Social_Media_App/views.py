@@ -12,7 +12,8 @@ def home(request):
     print(user_object.first_name)
     user_profile = profile.objects.get(user = user_object)
     print(user_profile.profile_img)
-    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object})
+    posts = posting.objects.all()
+    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object,"posts":posts})
 
 def signup(request):
     if request.method == 'POST':
@@ -123,6 +124,7 @@ def upload_post(request):
         user = request.user.username
         image = request.FILES.get('image_upload')
         caption = request.POST['caption']
+        print(caption)
 
         post = posting.objects.create(user=user, image=image,caption=caption)
         post.save()
@@ -130,7 +132,7 @@ def upload_post(request):
         return redirect('/')
     else:
         return redirect('/')
-    return HttpResponse("Hi my patner")
+     
 
 
 @login_required(login_url='signin')
