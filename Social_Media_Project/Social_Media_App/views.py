@@ -2,7 +2,7 @@ from email.mime import image
 from re import I
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import posting, profile
+from .models import likepost, posting, profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
@@ -13,7 +13,7 @@ def home(request):
     user_profile = profile.objects.get(user = user_object)
     print(user_profile.profile_img)
     posts = posting.objects.all()
-    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object,"posts":posts})
+    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object, "posts":posts})
 
 def signup(request):
     if request.method == 'POST':
@@ -132,7 +132,24 @@ def upload_post(request):
         return redirect('/')
     else:
         return redirect('/')
-     
+
+@login_required(login_url='signin')     
+def like_post(request):
+    username = request.user.username
+    post_id = request.GET.get('post_id')
+    post = posting.objects.get(id = post_id)
+    likefilter = likepost.objects.filter(post_id=post_id, username=username).first()
+    if likefilter == None:
+        new_like = likepost.objects.create(post_id=post_id, username=username)
+        new_like.save()
+        post.likes = post.likes + 1
+        post.save()
+        return redirect('/')
+    else:
+        likefilter.delete()
+        post.likes = post.likes - 1
+        post.save()
+        return redirect('/')
 
 
 @login_required(login_url='signin')

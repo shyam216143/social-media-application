@@ -25,3 +25,8 @@ class posting(models.Model):
     likes=models.IntegerField(default=0)
     def __str__(self) -> str:
         return self.user
+class likepost(models.Model):
+    post_id = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return self.username
