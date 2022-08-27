@@ -1,6 +1,9 @@
+from pyexpat import model
 from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth import get_user_model
+import uuid
+from datetime import datetime
 User = get_user_model()
 # Create your models here.
 class profile(models.Model):
@@ -11,3 +14,14 @@ class profile(models.Model):
     location = models.CharField(max_length=100, blank=True)
     def __str__(self) -> str:
         return self.user.username
+
+
+class posting(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user =models.CharField(max_length=100)
+    image = models.ImageField(upload_to = "posting_images")
+    caption =models.TextField()
+    created_at =models.DateTimeField(default=datetime.now)
+    likes=models.IntegerField(default=0)
+    def __str__(self) -> str:
+        return self.user
