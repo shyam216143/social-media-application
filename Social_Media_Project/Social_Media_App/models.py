@@ -1,0 +1,13 @@
+from tkinter.tix import Tree
+from django.db import models
+from django.contrib.auth import get_user_model
+User = get_user_model()
+# Create your models here.
+class profile(models.Model):
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    id_user = models.IntegerField()
+    bio = models.TextField(blank = True)
+    profile_img = models.ImageField(upload_to = 'profile_img', default ='blank-profile-picture.png')
+    location = models.CharField(max_length=100, blank=True)
+    def __str__(self) -> str:
+        return self.user.username

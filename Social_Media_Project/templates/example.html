@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+
+        function validateForm() {
+            var a = document.forms["Form"]["lname"].value;
+            var b = document.forms["Form"]["rname"].value;
+            var c = document.forms["Form"]["seat"].value;
+            var d = document.forms["Form"]["projector"].value;
+            if (a == null || a == "", b == null || b == "", c == null || c == "", d == null || d == "") {
+              alert("Please Fill All Required Field");
+              return false;
+            }
+          }
+        </script>
+        
+        
+        
+        <form method="post" action="/signin">
+            {% csrf_token %}
+            <label>location name: </label>
+            <input name="lname" maxlength="250" onclick()="validateForm()">
+            <br>
+            <label>Room name: </label>
+            <input name="rname" maxlength="250">
+            <br>
+            <label>No of Seats: </label>
+            <input type="number" name="seat" maxlength="10">
+            <br>
+            <label>Projector Screen</label>
+            <select name="projector">
+                <option value="Yes">Yes</option> 
+                <option value="No">No</option>
+            </select>
+            <br>
+            <label>Video conference</label>
+            <select name="video">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit" onclick = "validateForm()">
+        </form>
+</body>
+</html>
