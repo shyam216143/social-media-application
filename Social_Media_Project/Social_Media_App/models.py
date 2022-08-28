@@ -7,7 +7,7 @@ import uuid
 from datetime import datetime
 User = get_user_model()
 # Create your models here.
-class profile(models.Model):
+class Profile(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     id_user = models.IntegerField()
     bio = models.TextField(blank = True)
