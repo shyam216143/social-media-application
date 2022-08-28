@@ -1,21 +1,58 @@
-from crypt import methods
-from email.mime import image
-from re import I
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import likepost, posting, profile, followerscount
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from itertools import chain
+import random
 @login_required(login_url='signin')
 def home(request):
     user_object = User.objects.get(username = request.user.username)
     # print(user_object.first_name)
     user_profile = profile.objects.get(user = user_object)
 
+
+    user_following_list = []
+    feed = []
+    user_following = followerscount.objects.filter(follower =request.user.username)
+    for users in user_following:
+        user_following_list.append(users.user)
+
+
+    for usernames  in user_following_list:
+        feed_list = posting.objects.filter(user = usernames)
+        feed.append(feed_list)
+    
+
+    feed_list = list(chain(*feed))
+
+    # user suggestions 
+    all_users = User.objects.all()
+    user_following_all = []
+
+    for user in user_following:
+        user_list = User.objects.get(username = user.user)
+        user_following_all.append(user_list)
+    
+
+    new_suggest_list = [x for x in list(all_users) if (x not in list(user_following_all))]
+    curr_user = User.objects.filter(username = request.user.username)
+    final_suggest_list = [x for x in list(new_suggest_list) if (x not in list(curr_user))]
+    random.shuffle(final_suggest_list)
+    username_profile = []
+    username_profile_list = []
+    for users in final_suggest_list:
+        username_profile.append(users.id)
+    for ids in username_profile:
+        profile_list = profile.objects.filter(id_user= ids)
+        username_profile_list.append(profile_list)
+
+    suggestions_usernmae_profile_list = list(chain(*username_profile_list))        
+
     # print(user_profile.bio)
-    posts = posting.objects.all()
-    return render(request,"index.html", {'user_profile': user_profile , "user_object": user_object, "posts":posts})
+    # posts = posting.objects.all()
+    return render(request,"index.html", {'user_profile': user_profile , "user_object": user_object, "posts":feed_list, "suggestions":suggestions_usernmae_profile_list[:4]})
 
 def signup(request):
     if request.method == 'POST':
@@ -161,11 +198,23 @@ def Profile(request, pk):
     user_profile = profile.objects.get(user = user_object)
     user_posts = posting.objects.filter(user = pk)
     user_posts_len = len(user_posts)
+    follower = request.user.username
+    user = pk
+    if followerscount.objects.filter(follower=follower, user=user).first():
+        butt_text = 'Unfollow'
+       
+    else:
+        butt_text ="Follow"    
+    user_followers =len(followerscount.objects.filter(user=pk))
+    user_following =len(followerscount.objects.filter(follower=pk))
     context ={
         'user_objects':user_object,
         'user_profile':user_profile,
         'user_posts_len':user_posts_len,
         'user_posts':user_posts,
+        'button_text':butt_text,
+        "user_followers":user_followers,
+        "user_following":user_following,
         }
     return render(request,"profile.html", context)
 
@@ -180,19 +229,58 @@ def signout(request):
 def follow(request):
     if request.method == 'POST':
        follower = request.POST['follower']
-       user = request.POST['user']
+       user = request.POST.get('user')
+       print(user)
+       print('axsVsds')
 
-       if followerscount.objects.filter(follower =follower,user=user).first():
-           delete_follower = followerscount.objects.filter(follower =follower,user=user).first()
+       if followerscount.objects.filter(follower=follower, user=user).first():
+           delete_follower = followerscount.objects.get(follower =follower, user=user)
            delete_follower.delete()
+           print(user)
+           x ="/profile/"+user
+           print(x)
            return redirect('/profile/'+user)
        else:
             new_follower = followerscount.objects.create(follower =follower,user=user)
             new_follower.save()
+            print(user)
             return redirect('/profile/'+user)
-
-
-
-
     else:
         return redirect('/')
+
+@login_required(login_url='signin')
+def search(request):
+    user_object = User.objects.get(username = request.user.username)
+    user_profile = profile.objects.get(user = user_object)
+    if request.method == 'POST':
+        username = request.POST['username']
+        username_obj = User.objects.filter(username__icontains = username)
+
+        username_profile=[]
+        username_profile_list = []
+        for users in username_obj:
+            username_profile.append(users.id)
+
+        for ids in username_profile:
+            profile_list= profile.objects.filter(id_user=ids)
+            username_profile_list.append(profile_list)
+        username_profile_list = list(chain(*username_profile_list))
+    return render(request, 'searching.html',{"user_profile":user_profile,"username_list":username_profile_list})
+
+
+# @login_required(login_url='signin')
+# def follow(request):
+#     if request.method == 'POST':
+#         follower = request.POST['follower']
+#         user = request.POST['user']
+
+#         if followerscount.objects.filter(follower=follower, user=user).first():
+#             delete_follower = followerscount.objects.get(follower=follower, user=user)
+#             delete_follower.delete()
+#             return redirect('/profile/'+user)
+#         else:
+#             new_follower = followerscount.objects.create(follower=follower, user=user)
+#             new_follower.save()
+#             return redirect('/profile/'+user)
+#     else:
+#         return redirect('/')
