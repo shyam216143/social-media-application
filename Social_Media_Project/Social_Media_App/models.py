@@ -1,3 +1,4 @@
+from operator import mod
 from pyexpat import model
 from tkinter.tix import Tree
 from django.db import models
@@ -30,3 +31,9 @@ class likepost(models.Model):
     username = models.CharField(max_length=100)
     def __str__(self) -> str:
         return self.username
+
+class followerscount(models.Model):
+    follower = models.CharField(max_length=100)
+    user =models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return self.user

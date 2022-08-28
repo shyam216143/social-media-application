@@ -210,7 +210,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h3>{{user_objects.first_name}}</h3>
+                    <h4>Hey</h4>
+                    <h3>{{user_object.first_name}}</h3>
                 </div>
 
 
@@ -238,10 +239,13 @@
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
                                     <img src="{{user_profile.profile_img.url}}"
                                         class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                        
                                 </div>
+                                
                             </a>
-                            <span class="block capitalize font-semibold "> <a href="#">{{post.user}}</a> </span>
+                            <span class="block capitalize font-semibold "> <a href="/profile/{{post.user}}">{{post.user}}</a> <br><p>{{post.user.location}}</p></span>
                         </div>
+                        
                         <div>
                             <a href="#"> <i
                                     class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i>
@@ -332,7 +336,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     aria-hidden="true" role="img" width="25" height="25"
                                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
-                                    vckhshcb
+                                    
                                     <g fill="currentColor">
                                        
                                         <path

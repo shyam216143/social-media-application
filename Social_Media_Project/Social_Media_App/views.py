@@ -1,19 +1,21 @@
+from crypt import methods
 from email.mime import image
 from re import I
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import likepost, posting, profile
+from .models import likepost, posting, profile, followerscount
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 @login_required(login_url='signin')
 def home(request):
     user_object = User.objects.get(username = request.user.username)
-    print(user_object.first_name)
+    # print(user_object.first_name)
     user_profile = profile.objects.get(user = user_object)
-    print(user_profile.profile_img)
+
+    # print(user_profile.bio)
     posts = posting.objects.all()
-    return render(request,"index.html", {'user_profile':user_profile, 'user_object': user_object, "posts":posts})
+    return render(request,"index.html", {'user_profile': user_profile , "user_object": user_object, "posts":posts})
 
 def signup(request):
     if request.method == 'POST':
@@ -53,7 +55,7 @@ def signup(request):
                 auth.login(request,userlogin)
                
 
-                #create a Profile object for the new user
+                # #create a Profile object for the new user
                 user_model = User.objects.get(username=username)
                 new_profile = profile.objects.create(user=user_model, id_user=user_model.id)
                 new_profile.save()
@@ -63,6 +65,7 @@ def signup(request):
             return redirect('signup')
         
     else:
+
         return render(request, 'signup.html')
     
 
@@ -151,8 +154,45 @@ def like_post(request):
         post.save()
         return redirect('/')
 
+@login_required(login_url='signin')
+def Profile(request, pk):
+    user_object = User.objects.get(username=pk)
+    print(user_object.username)
+    user_profile = profile.objects.get(user = user_object)
+    user_posts = posting.objects.filter(user = pk)
+    user_posts_len = len(user_posts)
+    context ={
+        'user_objects':user_object,
+        'user_profile':user_profile,
+        'user_posts_len':user_posts_len,
+        'user_posts':user_posts,
+        }
+    return render(request,"profile.html", context)
+
 
 @login_required(login_url='signin')
 def signout(request):
     auth.logout(request)
     return redirect('signin')
+
+
+@login_required(login_url='signin')
+def follow(request):
+    if request.method == 'POST':
+       follower = request.POST['follower']
+       user = request.POST['user']
+
+       if followerscount.objects.filter(follower =follower,user=user).first():
+           delete_follower = followerscount.objects.filter(follower =follower,user=user).first()
+           delete_follower.delete()
+           return redirect('/profile/'+user)
+       else:
+            new_follower = followerscount.objects.create(follower =follower,user=user)
+            new_follower.save()
+            return redirect('/profile/'+user)
+
+
+
+
+    else:
+        return redirect('/')
