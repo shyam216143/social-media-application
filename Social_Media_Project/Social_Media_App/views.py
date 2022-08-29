@@ -496,8 +496,8 @@ def settings(request):
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
-        firstname = request.POST['fname']
-        lastname = request.POST['lname']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
         email = request.POST['email']
         password1 = request.POST['pass1']
         password2 = request.POST['pass2']

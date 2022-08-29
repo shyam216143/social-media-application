@@ -6,51 +6,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
     <title>Settings</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <style>
+        body {
+            margin-top: px;
+            background-color: rgb(180, 60, 12);
+        }
+
+        .xyz {
+            background-color: rgb(219, 94, 10) !important;
+
+        }
+
+        .pb-4,
+        .py-4 {
+            padding-bottom: 0rem !important;
+            padding-top: 1rem !important;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Kaushan Script', cursive;
+            font-size: 2.5em;
+        }
+
+        .shadow-none {
+            border-radius: 2em;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div class=" bg-white xyz py-4 shadow dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+
+
+            <div class="flex items-center lg:justify-between justify-around">
+
+                <a href="/">
+                    <b>
+                        <h1 style="font-size: 1.5rem; margin-left: -7em; margin-bottom: 1em; color: aqua;">SHYAM
+                            MEDIA_APP </h1>
+                    </b>
+                </a>
+
+                <div class="right-side lg:pr-4">
+                    <!-- welcome user -->
+                    <a href="#" class="" style="color:rgb(212, 255, 0) ; padding-bottom: 8%; font-size: 1.5rem;">
+                        Welcome <b name="" class=""
+                            style="color:rgb(0, 255, 179) ; padding-top: -12%; font-size: 1.5rem;">
+                           <a href="profile/{{user.username}}"> {{user.username}}</a></b>
+
+                    </a>
+                    <a href="profile/{{user.username}}" style="border-radius: 40%; margin-left: 70%; margin-top: -22%;">
+                        <img width="20%" height="10%" src="{{ user_profile.profile_img.url }}"  style="border-radius: 40%; margin-left: 80%; margin-top: -34.2%;" />
+                    </a>
 
 
 
+                </div>
 
+            </div>
 
+        </div>
+    </div>
 
     <div class="container m-auto">
 
         <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"><a href="/">HOME</a> Account Setting for
-            <b>{{user.first_name}}</b></h1>
-        <ul class="mt-5 -mr-3 flex-nowrap lg:overflow-hidden overflow-x-scroll uk-tab">
-            <li class="uk-active"><a href="#">General</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Notification</a></li>
-            <li><a href="#">Social links</a></li>
-            <li><a href="#">Billing</a></li>
-            <li><a href="#">Security</a></li>
-        </ul>
-        <br>
-        <hr>
+            <b style="color: rgb(48, 47, 47); font-size: 1.5em;">{{user.first_name}}</b>
+        </h1>
         <div class="grid lg:grid-cols-3 mt-12 gap-8">
-            <div>
-                <h3 class="text-xl mb-2"> General setting</h3>
-                <p></p>
-            </div>
-            
-                <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
-                    <form action="" method="post" enctype="multipart/form-data">{%csrf_token%}
+
+            <h3 class="text-xl mb-2"> General setting</h3>
+
+
+
+            <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2"
+                style=" background-color: rgb(17, 219, 10) !important; border-top-left-radius: 5%;border-bottom-right-radius: 5%;">
+                <form action="" method="post" enctype="multipart/form-data">{%csrf_token%}
                     <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
                         <div>
                             <label for=""> First name</label>
-                            
+
                             <input type="text" placeholder="Your name.." class="shadow-none bg-gray-100"
                                 value="{{user.first_name}}">
                         </div>
@@ -66,16 +120,19 @@
                         </div>
                         <div class="col-span-2">
                             <label for="">Add Profile Image</label>
-                            <img width="150" height="150" src="{{user_profile.profile_img.url}}" style="border-radius: 5%;" />
+                            <img width="150" height="150" src="{{user_profile.profile_img.url}}"
+                                style="border-radius: 5%;" />
                             <input type="file" placeholder="Your name.." name="image" class="shadow-none bg-gray-100">
                         </div>
                         <div class="col-span-2">
                             <label for="about">About me</label>
-                            <textarea id="about" name="bio" rows="3" class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
+                            <textarea id="about" name="bio" rows="3"
+                                class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
                         </div>
                         <div class="col-span-2">
                             <label for=""> Location</label>
-                            <input type="text" name="address" placeholder="" value="{{user_profile.location}}" class="shadow-none bg-gray-100">
+                            <input type="text" name="address" placeholder="" value="{{user_profile.location}}"
+                                class="shadow-none bg-gray-100">
                         </div>
                         <div>
                             <label for=""> Working at</label>
@@ -98,70 +155,12 @@
                         <button type="submit" class="button bg-blue-700"> Save </button>
                     </div>
                 </form>
-                </div>
-            
-            <div>
-                <h3 class="text-xl mb-2"> Privacy</h3>
-                <p> </p>
             </div>
-            <div class="bg-white rounded-md lg:shadow-lg shadow lg:p-6 p-4 col-span-2">
 
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h4> Who can follow me ?</h4>
-                            <div> </div>
-                        </div>
-                        <div class="switches-list -mt-8 is-large">
-                            <div class="switch-container">
-                                <label class="switch"><input type="checkbox"><span class="switch-button"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h4> Show my activities ?</h4>
-                            <div> </div>
-                        </div>
-                        <div class="switches-list -mt-8 is-large">
-                            <div class="switch-container">
-                                <label class="switch"><input type="checkbox" checked><span class="switch-button"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h4> Search engines?</h4>
-                            <div> </div>
-                        </div>
-                        <div class="switches-list -mt-8 is-large">
-                            <div class="switch-container">
-                                <label class="switch"><input type="checkbox"><span class="switch-button"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h4> Allow Commenting?</h4>
-                            <div> </div>
-                        </div>
-                        <div class="switches-list -mt-8 is-large">
-                            <div class="switch-container">
-                                <label class="switch"><input type="checkbox"><span class="switch-button"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <br>
+
+
+
 
         </div>
 

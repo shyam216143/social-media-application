@@ -1,145 +1,280 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
-    <title>Sign In to my book </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>SignIN </title>
 
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!------ Include the above in your HEAD tag ---------->
+
+   <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+   <!-- <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"> -->
+   <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+   <link href="https://stackpath.boot">
+   <style>
+      body {
+         top: 0;
+         padding: 0%;
+         /* padding-top: .1rem; */
+         padding-bottom: 2.2rem;
+
+         z-index: 0;
+         background: rgba(38, 167, 21, 0.76);
+      }
+
+      a {
+         text-decoration: none !important;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Kaushan Script', cursive;
+         font-size: 2.5em;
+      }
+
+      .myform {
+         position: relative;
+         display: -ms-flexbox;
+         display: flex;
+         padding: 1rem;
+         margin-top: 5rem;
+         -ms-flex-direction: column;
+         flex-direction: column;
+         width: 120%;
+         pointer-events: auto;
+         background-color: rgb(118, 221, 208);
+         background-clip: padding-box;
+         border: 1px solid rgba(0, 0, 0, .2);
+         border-radius: 1.1rem;
+         outline: 0;
+         max-width: 500px;
+      }
+
+      .tx-tfm {
+         text-transform: uppercase;
+      }
+
+      .mybtn {
+         border-radius: 50px;
+      }
+
+      .login-or {
+         position: relative;
+         color: #aaa;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         padding-top: 10px;
+         padding-bottom: 10px;
+      }
+
+      .span-or {
+         display: block;
+         position: absolute;
+         left: 50%;
+         top: -2px;
+         margin-left: -25px;
+         background-color: #fff;
+         width: 50px;
+         text-align: center;
+      }
+
+      #username {
+         border-radius: 10em;
+
+      }
+
+      #firstname {
+         border-radius: 10em;
+
+      }
+
+      #lastname {
+         border-radius: 10em;
+
+      }
+
+      #email {
+         border-radius: 10em;
+
+      }
+
+      #password {
+         border-radius: 10em;
+
+      }
+
+      #password2 {
+         border-radius: 10em;
+
+      }
+
+
+
+      .hr-or {
+         height: 1px;
+         margin-top: 0px !important;
+         margin-bottom: 0px !important;
+      }
+
+      .google {
+         color: #666;
+         width: 100%;
+         height: 40px;
+         text-align: center;
+         outline: none;
+         border: 1px solid lightgrey;
+      }
+
+      form .error {
+         color: #ff0000;
+      }
+
+
+
+      .bg-white {
+         background-color: rgb(219, 94, 10) !important;
+      }
+   </style>
 </head>
 
-<body class="bg-gray-100">
+<body>
+   <div class=" bg-white py-4 shadow dark:bg-gray-800">
+      <div class="max-w-6xl mx-auto">
 
 
-    <div id="wrapper" class="flex flex-col justify-between h-screen">
+         <div class="flex items-center lg:justify-between justify-around">
 
-        <!-- header-->
-        <div class="bg-white py-4 shadow dark:bg-gray-800">
-            <div class="max-w-6xl mx-auto">
+            <a href="/signin">
+               <b>
+                  <h1 style="font-size: 1.5rem; margin-left: -7em;">SHYAM MEDIA_APP </h1>
+               </b>
+            </a>
 
+            <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
 
-                <div class="flex items-center lg:justify-between justify-around">
-
-                    <a href="/signin">
-                       <b><h1 style="font-size: 1.5rem;">SHYAM MEDIA_APP </h1></b>
-                    </a>
-
-                    <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
-                        
-                        <a href="/signup" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Sign Up</a>
-                    </div>
-
-                </div>
+               <a href="/signup" class="bg-yellow-400 yellow-400 px-6 py-3 rounded-md shadow text-white"
+                  style="border-radius:30%">Sign Up</a>
             </div>
-        </div>
 
-        <!-- Content-->
-        <div>
-            <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
-                <h1 class="lg:text-3xl text-xl font-semibold  mb-6"> Log in</h1>
-                <div>
-                    <style>
-                        h5 {
-                            color: red;
-                        }
-                    </style>
-                    {% for message in messages %}
-                    <h5>{{message}}</h5>
-                    {% endfor %}
-                </div>
-                <form action="" method="post">{% csrf_token %}
-                    <input type="text" name ='username' placeholder="Username" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="password" name="password" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <div class="flex justify-between my-4">
-                        <div class="checkbox">
-                            <input type="checkbox" id="chekcbox1" checked>
-                            <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
+         </div>
+      </div>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-5 mx-auto">
+            <div id="first">
+               <div class="myform form ">
+                  <div class="logo mb-3">
+                     <div class="col-md-12 text-center">
+                        <h1>Login</h1>
+                     </div>
+                  </div>
+                  <div>
+                     <style>
+                         h5 {
+                             color: red;
+                         }
+                     </style>
+                     {% for message in messages %}
+                     <h5>{{message}}hello</h5>
+                     {% endfor %}
+                 </div>
+                  <form action="" method="post" name="login">{% csrf_token %}
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Username </label>
+                        <input type="username" name="username" class="form-control" id="username"
+                           aria-describedby="emailHelp" placeholder="user name">
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Password</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                           aria-describedby="emailHelp" placeholder="Enter Password">
+                     </div>
+                     <div class="form-group">
+                        <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                     </div>
+                     <div class="col-md-12 text-center ">
+                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" style="background-color:rgb(190, 221, 32) ;">Login</button>
+                     </div>
+                     <div class="col-md-12 ">
+                        <div class="login-or">
+                           <hr class="hr-or">
+                           <span class="span-or">or</span>
                         </div>
-                        <a href="#"> Forgot Your Password? </a>
-                    </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
-                    <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Not registered? <a href="/signup" class=""> Create a account </a></p>
-                    </div>
-                </form>
+                     </div>
+                     <div class="col-md-12 mb-3">
+                        <p class="text-center">
+                           <a href="javascript:void();" class="google btn mybtn" style="background-color:rgb(21, 76, 159) ;"> <i class="fa fa-google-plus">
+                              </i> Signup using Google
+                           </a>
+                        </p>
+                     </div>
+                     <div class="form-group">
+                        <p class="text-center">Don't have account? <a href="/signup" id="signup">Sign up here</a></p>
+                     </div>
+                  </form>
+
+               </div>
             </div>
-        </div>
-        
-        <!-- Footer -->
 
-        <div class="lg:mb-5 py-3 uk-link-reset">
-            <div class="flex flex-col items-center justify-between lg:flex-row max-w-6xl mx-auto lg:space-y-0 space-y-3">
-                <div class="flex space-x-2 text-gray-700 uppercase">
-                    <a href="#"> About</a>
-                    <a href="#"> Help</a>
-                    <a href="#"> Terms</a>
-                    <a href="#"> Privacy</a>
-                </div>
-                <p class="capitalize"> © copyright 2022 by SHYAM KUMAR</p>
-            </div>
-        </div>
+         </div>
+      </div>
+   </div>
+   <script>
+      //   $("#signup").click(function () {
+      //       $("#first").fadeOut("slow", function () {
+      //           $("#second").fadeIn("slow");
+      //       });
+      //   });
 
-    </div>
+      //   $("#signin").click(function () {
+      //       $("#second").fadeOut("fast", function () {
+      //           $("#first").fadeIn("fast");
+      //       });
+      //   });
 
 
-    <!--<script>
-        
-        (function (window, document, undefined) {
-            'use strict';
-            if (!('localStorage' in window)) return;
-            var nightMode = localStorage.getItem('gmtNightMode');
-            if (nightMode) {
-                document.documentElement.className += ' dark';
+
+      $(function () {
+         $("form[name='login']").validate({
+            rules: {
+
+               username: {
+                  required: true,
+                  email: true
+               },
+               password: {
+                  required: true,
+                  password: true
+
+               }
+            },
+            messages: {
+               username: "Please enter a valid username address",
+
+               password: {
+                  required: "Please enter password",
+
+               }
+
+            },
+            submitHandler: function (form) {
+               form.submit();
             }
-        })(window, document);
-    
-    
-        (function (window, document, undefined) {
-    
-            'use strict';
-    
-            // Feature test
-            if (!('localStorage' in window)) return;
-    
-            // Get our newly insert toggle
-            var nightMode = document.querySelector('#night-mode');
-            if (!nightMode) return;
-    
-            // When clicked, toggle night mode on or off
-            nightMode.addEventListener('click', function (event) {
-                event.preventDefault();
-                document.documentElement.classList.toggle('dark');
-                if (document.documentElement.classList.contains('dark')) {
-                    localStorage.setItem('gmtNightMode', true);
-                    return;
-                }
-                localStorage.removeItem('gmtNightMode');
-            }, false);
-    
-        })(window, document);
-    </script>-->
-
-    <!-- Scripts
-    ================================================== -->
-    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/uikit.js' %}"></script>
-    <script src="{% static 'assets/js/simplebar.js' %}"></script>
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-
+         });
+      });
+   </script>
 
 </body>
-
 
 </html>
