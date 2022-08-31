@@ -277,15 +277,27 @@
 # #     else:
 # #         return redirect('/')
 
-
+from base64 import urlsafe_b64decode
+from email import message
+from lib2to3.pgen2.tokenize import generate_tokens
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile, posting, likepost, followerscount
 from itertools import chain
 import random
+from django.core.mail import EmailMessage,send_mail 
+from django.core.mail import send_mail
+from .tokens import generate_token
+from Social_Media_Project.settings import *
+
+
 
 
 # Create your views here.
@@ -429,23 +441,6 @@ def profile(request, pk):
     }
     return render(request, 'profile.html', context)
 
-
-# def follow(request):
-#     if request.method == 'POST':
-#         follower = request.POST['follower']
-#         user = request.POST['user']
-
-#         if FollowersCount.objects.filter(follower=follower, user=user).first():
-#             delete_follower = FollowersCount.objects.get(follower=follower, user=user)
-#             delete_follower.delete()
-#             return redirect('/profile/'+user)
-#         else:
-#             new_follower = FollowersCount.objects.create(follower=follower, user=user)
-#             new_follower.save()
-#             return redirect('/profile/'+user)
-#     else:
-#         return redirect('/')
-
 @login_required(login_url='signin')
 def follow(request):
     if request.method == 'POST':
@@ -538,16 +533,40 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname,
                                                 email=email, password=password1)
+                user.is_active=False                                
                 user.save()
-                # log user in and redirect to settings page
-                user_login = auth.authenticate(username=username, password=password1)
-                auth.login(request, user_login)
+                messages.success(request, "your Acount has been succesfully created. We have sent  you a confirmation email, please confirm your email in order to activate your account.")
+                # sending emails
+                # welcome email
+                subject = "welcome to my app Django-login"
+                message = "hello" + user.first_name + "|| \n" + " Welcome to Website Login \n Thank you for visiting website \n we have also sent you a confirmation email, please confirm your email Address in order to activate your account.\n\n Thanking You \n Shyam Kumar"
+                from_email = EMAIL_HOST_USER
+                to_list = [user.email]
+                send_mail(subject, message, from_email, to_list, fail_silently = True) 
+            
 
-                # create a Profile object for the new user
-                user_model = User.objects.get(username=username)
-                new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
-                new_profile.save()
-                return redirect('settings')
+                # email adress confirmation email
+                current_site = get_current_site(request)
+                
+                email_subject = "confirm your email @ shyam website!!"
+                message2 = render_to_string('email_confirmation.html',{
+                    'name':user.first_name,
+                    'domain':current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': generate_token.make_token(user)
+
+                }) 
+                # create email object
+                email = EmailMessage(
+                    email_subject,
+                    message2,
+                    EMAIL_HOST_USER, 
+                    [user.email],
+                )
+                email.fail_silently = True
+                email.send() 
+
+                return redirect('signin')
         else:
             messages.info(request, 'Password Not Matching')
             return redirect('signup')
@@ -565,6 +584,12 @@ def signin(request):
 
         if user is not None:
             auth.login(request, user)
+            
+           
+
+            # #create a Profile object for the new user
+            
+
             return redirect('/')
         else:
             messages.info(request, 'Username or Password is Invalid')
@@ -578,6 +603,31 @@ def signin(request):
 def signout(request):
     auth.logout(request)
     return redirect('signin')
+
+
+
+def activate(request,uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        myuser = User.objects.get(pk=uid)
+    except(TypeError, OverflowError,ValueError, User.DoesNotExist):
+        myuser= None
+
+
+
+    if myuser is not None and generate_token.check_token(myuser, token):
+        myuser.is_active = True
+        myuser.save()
+        auth.login(request, myuser) 
+        messages.success(request, "Your Account has been activated!!")
+        user_model = User.objects.get(username=myuser.username)
+        new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
+        new_profile.save()
+        return redirect('settings')   
+     
+
+    else:
+        return render(request, "activation_failed.html")    
 
 
 def example(request):

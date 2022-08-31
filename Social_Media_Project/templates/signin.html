@@ -186,7 +186,7 @@
                          }
                      </style>
                      {% for message in messages %}
-                     <h5>{{message}}hello</h5>
+                     <h5>{{message}}</h5>
                      {% endfor %}
                  </div>
                   <form action="" method="post" name="login">{% csrf_token %}
@@ -231,20 +231,6 @@
       </div>
    </div>
    <script>
-      //   $("#signup").click(function () {
-      //       $("#first").fadeOut("slow", function () {
-      //           $("#second").fadeIn("slow");
-      //       });
-      //   });
-
-      //   $("#signin").click(function () {
-      //       $("#second").fadeOut("fast", function () {
-      //           $("#first").fadeIn("fast");
-      //       });
-      //   });
-
-
-
       $(function () {
          $("form[name='login']").validate({
             rules: {
