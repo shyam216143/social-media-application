@@ -357,9 +357,11 @@ def upload_post(request):
 def search(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
+    username=[]
 
     if request.method == 'POST':
         username = request.POST['username']
+        print(username)
         username_object = User.objects.filter(username__icontains=username)
 
         username_profile = []
@@ -373,7 +375,7 @@ def search(request):
             username_profile_list.append(profile_lists)
 
         username_profile_list = list(chain(*username_profile_list))
-    return render(request, 'searching.html', {'user_profile': user_profile, 'username_list': username_profile_list})
+    return render(request, 'searching.html', {'user_profile': user_profile, 'username_list': username_profile_list,"user_name":username})
 
 
 @login_required(login_url='signin')
@@ -464,6 +466,8 @@ def follow(request):
 @login_required(login_url='signin')
 def settings(request):
     user_profile = Profile.objects.get(user=request.user)
+    user_obect = User.objects.get(username = request.user.username)
+    print(user_obect.first_name)
 
     if request.method == 'POST':
 
@@ -471,11 +475,20 @@ def settings(request):
             image = user_profile.profile_img
             bio = request.POST['bio']
             location = request.POST['address']
-
+            firstname = request.POST['fname']
+            lastname = request.POST['lname']
+            work = request.POST['working']
+           
+ 
             user_profile.profile_img = image
             user_profile.bio = bio
             user_profile.location = location
+            user_profile.working = work
+            
             user_profile.save()
+            user_obect.first_name=firstname
+            user_obect.last_name=lastname
+            user_obect.save()
 
         if request.FILES.get('image') != None:
             image = request.FILES.get('image')

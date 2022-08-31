@@ -9,6 +9,7 @@ urlpatterns = [
     path('settings', settings, name='settings'),
     path('like_post', like_post, name='like-posts'),
     path('follow', follow, name='follow'),
+    path('search',search, name='search'),
     path('example', example, name='example'),
     path('example1', example1, name='example1'),
     path('profile/<str:pk>', profile, name='profile'),

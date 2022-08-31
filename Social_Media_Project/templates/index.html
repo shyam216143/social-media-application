@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 </head>
 
-<body>
+<body style="background-color:rgb(50, 51, 48)!important ;">
 
     <header>
         <div class="header_inner">
@@ -38,8 +39,8 @@
                         </div>-->
 
                     <!-- <div class="header_search"> -->
-                        <input type="text" name="username" placeholder="Search for username.."> &nbsp; &nbsp;
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                    <input type="text" name="username" placeholder="Search for username.."> &nbsp; &nbsp;
+                    <button type="submit"><i class="fa fa-search"></i></button>
                     <!-- </div> -->
 
                 </div>
@@ -348,58 +349,10 @@
 
                             </a>
                         </div>
-                        <!-- <div class="flex items-center space-x-3">
-                            <div class="flex items-center">
-                                <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt=""
-                                    class="w-6 h-6 rounded-full border-2 border-white ">
-                                <img src="{% static 'assets/images/avatars/avatar-4.jpg' %}" alt=""
-                                    class="w-6 h-6 rounded-full border-2 border-white  -ml-2">
-                                <img src="{% static 'assets/images/avatars/avatar-2.jpg' %}" alt=""
-                                    class="w-6 h-6 rounded-full border-2 border-white  -ml-2">
-                            </div>
-                            <div class="">
-                                Liked <strong> taiye</strong> and <strong> 209 Others </strong>
-                            </div>
-                        </div> -->
+                        
                         <p>
                             <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong> </a>{{post.caption}}
                         </p>
-
-                        <!-- 
-                        <div class="border-t pt-4 space-y-4 ">
-                            <div class="flex">
-                                <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                    <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt=""
-                                        class="absolute h-full rounded-full w-full">
-                                </div>
-                                <div
-                                    class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20   ">
-                                    <p class="leading-6">Y'all like billie eillish? <urna class="i uil-heart"></urna> <i
-                                            class="uil-grin-tongue-wink"> </i> </p>
-                                    <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 "></div>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                    <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt=""
-                                        class="absolute h-full rounded-full w-full">
-                                </div>
-                                <div
-                                    class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20   ">
-                                    <p class="leading-6">She's my favourite <i class="uil-grin-tongue-wink-alt"></i>
-                                    </p>
-                                    <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 "></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- 
-                        <div class="bg-gray-100 bg-gray-100 rounded-full rounded-md relative ">
-                            <input type="text" placeholder="post a comment" class="bg-transparent max-h-10 shadow-none">
-                            <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                <a href="#"> <i class="uil-image"></i></a>
-                                <a href="#"> <i class="uil-video"></i></a>
-                            </div>
-                        </div> -->
 
                     </div>
 
@@ -418,18 +371,20 @@
 
                 <div class="bg-white  shadow-md rounded-md overflow-hidden">
 
-                    <div class="bg-gray-50  border-b border-gray-100 flex items-baseline justify-between py-4 px-6 ">
-                        <h2 class="font-semibold text-lg">Users You Can Follow</h2>
-                        <!-- <a href="#"> Refresh</a> -->
+                    <div class="bg-gray-50  border-b border-gray-100 flex items-baseline justify-between py-4 px-6 " style="border-bottom:2px solid black ;">
+                        <h2 class="font-semibold text-lg"><button onclick="fun()"
+                            >Users You Can Follow</button></h2>
+                      
+                            
                     </div>
+
                     {% for sugg in suggestions %}
 
-                    <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 ">
+                    <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 " id="xyz" style="display: none; background-color: rgb(0, 170, 255);">
                         <div class="flex items-center justify-between py-3">
                             <div class="flex flex-1 items-center space-x-4">
                                 <a href="/profile/{{sugg.user}}">
-                                    <img src="{{sugg.profile_img.url}}"
-                                        class="bg-gray-200 rounded-full w-10 h-10">
+                                    <img src="{{sugg.profile_img.url}}" class="bg-gray-200 rounded-full w-10 h-10">
                                 </a>
                                 <div class="flex flex-col">
                                     <span class="block capitalize font-semibold"> {{sugg.user}} </span>
@@ -438,11 +393,11 @@
                             </div>
 
                             <a href="/profile/{{sugg.user}}"
-                                class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 ">
+                                class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 "  style="background-color: rgb(255, 128, 0);">
                                 Follow </a>
                         </div>
-                        
-                      
+
+
                     </div>
                     {% endfor %}
 
@@ -478,6 +433,19 @@
 
 
     <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+    <script>
+        function fun() {
+            var x =document.getElementById("xyz");
+            if (x.style.display == "block"){
+                x.style.display = "none";
+            }
+            else{
+                x.style.display = "block";
+            }
+                
+            
+        }  
+    </script>
 </body>
 
 

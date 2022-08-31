@@ -46,7 +46,11 @@
         }
 
         .shadow-none {
-            border-radius: 2em;
+            border-top-left-radius: 0.5rem;
+            border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+           
         }
     </style>
 
@@ -106,12 +110,12 @@
                             <label for=""> First name</label>
 
                             <input type="text" placeholder="Your name.." class="shadow-none bg-gray-100"
-                                value="{{user.first_name}}">
+                                value="{{user.first_name}}" name="fname">
                         </div>
                         <div>
                             <label for=""> Last name</label>
                             <input type="text" placeholder="Your name.." class="shadow-none bg-gray-100"
-                                value="{{user.last_name}}">
+                                value="{{user.last_name}}" name="lname">
                         </div>
                         <div class="col-span-2">
                             <label for=""> Email</label>
@@ -136,7 +140,7 @@
                         </div>
                         <div>
                             <label for=""> Working at</label>
-                            <input type="text" placeholder="" class="shadow-none bg-gray-100">
+                            <input type="text"  name="working" value="{{user_profile.working}}" placeholder="address" class="shadow-none bg-gray-100">
                         </div>
                         <div>
                             <label for=""> Relationship </label>

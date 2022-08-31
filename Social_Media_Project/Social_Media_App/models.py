@@ -13,6 +13,7 @@ class Profile(models.Model):
     bio = models.TextField(blank = True)
     profile_img = models.ImageField(upload_to = 'profile_img', default ='blank-profile-picture.png')
     location = models.CharField(max_length=100, blank=True)
+    working = models.CharField(max_length=100, default=True)
     def __str__(self) -> str:
         return self.user.username
 
