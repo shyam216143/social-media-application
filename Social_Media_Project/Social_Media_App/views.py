@@ -279,6 +279,7 @@
 
 from base64 import urlsafe_b64decode
 from email import message
+from email.headerregistry import Group
 from lib2to3.pgen2.tokenize import generate_tokens
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
@@ -289,7 +290,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, posting, likepost, followerscount
+from .models import Profile, posting, likepost, followerscount,Groups, Message
 from itertools import chain
 import random
 from django.core.mail import EmailMessage,send_mail 
@@ -636,6 +637,16 @@ def example1(request):
     return render(request, "example1.html")
 
 
-def channel(request):
-    return render(request, 'channel.html')
+
+
+
+def channel(request, grp):
+    group = Groups.objects.filter(name=grp).first()
+    message=[]
+    if group:
+        message =Message.objects.filter(group = group)
+    else:
+        group = Groups(name=grp)
+        group.save()
+    return render(request, 'channel.html',{'group':grp,"message":message})
       

@@ -8,19 +8,29 @@
 </head>
 <body>
     Connecting to django:<p class="xyz">Hello world </p>
-
-     <textarea name="" id="textarea " cols="100" rows="30"></textarea><br>
+    
+     <h1>link name is:{{group}}</h1>
+     <textarea name="" id="textarea1" cols="100" rows="30">
+        {% for x in message %}
+        {{x.message}}
+        {% endfor %}
+     </textarea><br>
      <input type="text" id="input1" value="" ><br>
-     <button type="button" id="btn1">submit
+     <!-- <button type="button" id="btn1">submit</button> -->
+     <input type="button" id="btn1" value="submit">
 
-     </button>
+     {{group|json_script:"group"}}
     
 
     <script>
-        var x = new WebSocket("ws://127.0.0.1:8000/ws/sc/")
+        const grp = JSON.parse(document.getElementById('group').textContent)
+        console.log(grp)
+        let link = ('ws://'+ window.location.host+ '/ws/sc/' + grp)
+     
+        var x = new WebSocket(link)
+        console.log(link)
         var v = document.getElementById('input1').value
         
-
 
         x.onopen= function(e){
             console.log("websocket is opened ....",e)
@@ -28,8 +38,15 @@
         }
         x.onmessage = function(e){
             console.log("websocket is on message",e)
-            let ex =  document.getElementById('textarea')
-            ex.innerTex=
+            console.log("websocket is sent  message is ",e.data)
+            console.log("websocket is sent  message type is ",typeof(e.data))
+            data = JSON.parse(e.data)
+            console.log(" Afetr parsedwebsocket is sent  message type is ",typeof(data))
+
+            
+            let ex =  document.querySelector('#textarea1')
+            ex.value += (data.msg +"\n")
+            
         }
         x.onclose = function(){
             console.log("websocket is closed")

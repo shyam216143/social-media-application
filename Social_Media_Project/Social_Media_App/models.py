@@ -38,3 +38,15 @@ class followerscount(models.Model):
     user =models.CharField(max_length=100)
     def __str__(self) -> str:
         return self.user
+
+
+class Groups(models.Model):
+    name = models.CharField(max_length=500)
+    def __str__(self) -> str:
+        return self.name
+
+
+class Message(models.Model):
+    message= models.CharField(max_length=3000)
+    time = models.DateTimeField(auto_now=True)
+    group = models.ForeignKey(Groups,on_delete=models.CASCADE)
