@@ -634,3 +634,8 @@ def example(request):
     return render(request, "example.html")
 def example1(request):
     return render(request, "example1.html")
+
+
+def channel(request):
+    return render(request, 'channel.html')
+      

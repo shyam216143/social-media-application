@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,7 +75,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Social_Media_Project.wsgi.application'
+# WSGI_APPLICATION = 'Social_Media_Project.wsgi.application'
+ASGI_APPLICATION = 'Social_Media_Project.asgi.application'
 
 
 # Database
@@ -136,3 +138,11 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets') #this is you assets folder.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}
