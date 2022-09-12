@@ -51,20 +51,92 @@
                 </div>
             </form>
             <style>
-                .font-bold:hover{
+                .friends-container {
+                    width: 100%;
+                    height: 380px;
+                    /* border: 2px solid black; */
+                    overflow: auto;
+                }
+
+                .friends{
+    width: 100%;
+    height: 80px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0px 10px;
+    
+}
+
+.pic, .pro-pic{
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+}
+.name{
+    flex-grow: 2;
+    /* border: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.name p{
+    font-size: 14px;
+}
+
+.time_new_msg{
+    width: auto;
+    height: 50px;
+    /* border: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.time_new_msg p{
+    font-size: 14px;
+}
+
+.msg{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(29, 11, 150);
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    
+}
+
+
+                .font-bold:hover {
                     background-color: red;
                 }
-                .bg-yellow-400{
+
+                .bg-yellow-400 {
                     background-color: yellow;
                     color: grey;
-                   
+
 
                 }
-                .right-side{
+
+                .right-side {
                     left: 72%;
                 }
-                .shy{
-                    background-color: rgb(0, 170, 255); ;
+
+                .shy {
+                    background-color: rgb(0, 170, 255);
+                    ;
                 }
             </style>
             <div class="right-side lg:pr-4">
@@ -77,7 +149,7 @@
                 <!-- upload dropdown box -->
                 <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
                     class="header_dropdown shy">
-                    
+
                     {% for sugg in suggestions %}
 
                     <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 ">
@@ -105,11 +177,115 @@
                     </div>
                     {% endfor %}
 
-                  
-                  
+
+
                 </div>
 
-                
+
+
+
+            </div>
+
+            <div class="right-side lg:pr-4">
+                <!-- upload -->
+                <a href="#"
+                    class="bg-yellow-400 flex font-bold hidden hover:bg-transparent hover:text-white  items-right lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white">
+                    <ion-icon name="add-circle" class="-mb-1
+                             mr-1 opacity-90 text-xl uilus-circle"></ion-icon>messages
+                </a>
+                <!-- upload dropdown box -->
+                <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small"
+                    class="header_dropdown shy">
+
+                    <div class="friends-container">
+
+
+
+                        <a href="friend/{{x.profile.id}}" style="color:black; text-decoration: none">
+                            <div class="friends">
+                                <div class="pic">
+                                    <img src="{{x.profile.image.url}}" alt="" />
+                                </div>
+                                <div class="name">
+                                    <h5>{{x.profile.name}}</h5>
+                                    <p>How are you doing today</p>
+                                </div>
+                                <div class="time_new_msg" id="xyz1" style="display: none;">
+                                    {% comment %} <p>7:30am</p> {% endcomment %}
+
+                                    <div class="msg">0</div>
+
+
+                                </div>
+                            </div>
+                        </a>
+                        <a href="friend/{{x.profile.id}}" style="color:black; text-decoration: none">
+                            <div class="friends">
+                                <div class="pic">
+                                    <img src="{{x.profile.image.url}}" alt="" />
+                                </div>
+                                <div class="name">
+                                    <h5>{{x.profile.name}}</h5>
+                                    <p>How are you doing today</p>
+                                </div>
+                                <div class="time_new_msg" id="xyz1" style="display: none;">
+                                    {% comment %} <p>7:30am</p> {% endcomment %}
+
+                                    <div class="msg">0</div>
+
+
+                                </div>
+                            </div>
+                        </a>
+                        <a href="friend/{{x.profile.id}}" style="color:black; text-decoration: none">
+                            <div class="friends">
+                                <div class="pic">
+                                    <img src="{{x.profile.image.url}}" alt="" />
+                                </div>
+                                <div class="name">
+                                    <h5>{{x.profile.name}}</h5>
+                                    <p>How are you doing today</p>
+                                </div>
+                                <div class="time_new_msg" id="xyz1" style="display: none;">
+                                    {% comment %} <p>7:30am</p> {% endcomment %}
+
+                                    <div class="msg">0</div>
+
+
+                                </div>
+                            </div>
+                        </a>
+                        <a href="friend/{{x.profile.id}}" style="color:black; text-decoration: none">
+                            <div class="friends">
+                                <div class="pic">
+                                    <img src="{{x.profile.image.url}}" alt="" />
+                                </div>
+                                <div class="name">
+                                    <h5>{{x.profile.name}}</h5>
+                                    <p>How are you doing today</p>
+                                </div>
+                                <div class="time_new_msg" id="xyz1" style="display: none;">
+                                    {% comment %} <p>7:30am</p> {% endcomment %}
+
+                                    <div class="msg">0</div>
+
+
+                                </div>
+                            </div>
+                        </a>
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
 
 
             </div>
@@ -434,8 +610,8 @@
 
             </div>
 
-          
-           
+
+
         </div>
 
 
