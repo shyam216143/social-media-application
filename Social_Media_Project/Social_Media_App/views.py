@@ -290,7 +290,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, posting, likepost, followerscount,Groups, Message
+from .models import Profile, posting, likepost, followerscount,Groups,Message
 from itertools import chain
 import random
 from django.core.mail import EmailMessage,send_mail 
@@ -632,7 +632,23 @@ def activate(request,uidb64, token):
 
 
 def example(request):
-    return render(request, "example.html")
+    threads = ThreadingTable.objects.by_user(user=request.user).prefetch_related('message1').order_by('timestamp') 
+    arr=[]
+    profile1=[]
+    user_profile = Profile.objects.get(user=request.user)
+    user_obect = User.objects.get(username = request.user.username)
+    for i in range(len(threads)):
+        arr.append(threads[i])
+        y= threads[i].second_person.id
+        d = Profile.objects.get(user=y)
+        profile1.append(d.profile_img)
+
+    context={
+        'threads':threads,
+        'profile1':profile1,
+        "user_profile":user_profile,
+    }
+    return render(request, "example.html",context)
 def example1(request):
     return render(request, "example1.html")
 

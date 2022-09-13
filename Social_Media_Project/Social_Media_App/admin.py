@@ -11,3 +11,11 @@ class GroupAdmin(admin.ModelAdmin):
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     list = ['id','message','time','group']
+
+
+
+
+
+
+
+

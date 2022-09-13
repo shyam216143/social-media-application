@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *
-
+from messageapp import views
 urlpatterns = [
     path('', home),
     path('signup', signup, name='signup'),
@@ -17,5 +17,7 @@ urlpatterns = [
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',  
         activate, name='activate'),  
     path("channel/<str:grp>", channel, name='channel'),
+    path("best", views.home1, name='home'),
+
 
 ]

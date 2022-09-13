@@ -4,6 +4,9 @@ from time import sleep
 from channels.consumer import AsyncConsumer,SyncConsumer
 from channels.exceptions  import StopConsumer
 from time import sleep
+from channels.db import database_sync_to_async
+from django.contrib.auth.models import User
+
 import asyncio
 from asgiref.sync import async_to_sync
 from django.contrib.auth import authenticate
@@ -105,4 +108,19 @@ class Mysync1(SyncConsumer):
             self.channel_name
         )
         raise StopConsumer()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
