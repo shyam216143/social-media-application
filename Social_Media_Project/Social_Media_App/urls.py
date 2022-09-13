@@ -18,6 +18,7 @@ urlpatterns = [
         activate, name='activate'),  
     path("channel/<str:grp>", channel, name='channel'),
     path("best", views.home1, name='home'),
+    path("example2", example2, name='example2'),
 
 
 ]

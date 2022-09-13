@@ -313,7 +313,17 @@ def home(request):
     feed = []
 
     user_following = followerscount.objects.filter(follower=request.user.username)
-
+    # for i in user_following:
+    #     x=followerscount.objects.filter(follower=i.follower)
+    #     print(x.first())
+    #     if x.exists():
+    #         if  followerscount.objects.get(follower=i.follower).user.exists():
+    #             pass
+            
+    #     else:
+    #         s=ThreadingTable(first_person=i.user,second_person=i.follower)
+    #         s.save()
+    threads = ThreadingTable.objects.by_user(user=request.user).prefetch_related('message1').order_by('timestamp')         
     for users in user_following:
         user_following_list.append(users.user)
 
@@ -348,7 +358,7 @@ def home(request):
 
     suggestions_username_profile_list = list(chain(*username_profile_list))
 
-    return render(request, 'index.html', {'user_profile': user_profile, 'user_object': user_object, 'posts': feed_list,
+    return render(request, 'index.html', {'user_profile': user_profile, 'user_object': user_object, 'posts': feed_list,'threads':threads,
                                           'suggestions': suggestions_username_profile_list[:4]})
 
 
@@ -666,4 +676,8 @@ def channel(request, grp):
         group = Groups(name=grp)
         group.save()
     return render(request, 'channel.html',{'group':grp,"message":message})
-      
+
+
+
+def example2(request):
+    return render(request, "example2.html")
