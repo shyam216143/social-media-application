@@ -280,6 +280,7 @@
 from base64 import urlsafe_b64decode
 from email import message
 from email.headerregistry import Group
+import imp
 from lib2to3.pgen2.tokenize import generate_tokens
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
@@ -297,7 +298,7 @@ from django.core.mail import EmailMessage,send_mail
 from django.core.mail import send_mail
 from .tokens import generate_token
 from Social_Media_Project.settings import *
-
+from messageapp.models import ThreadingTable, Messages1
 
 
 
