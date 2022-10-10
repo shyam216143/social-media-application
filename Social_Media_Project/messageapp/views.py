@@ -22,6 +22,6 @@ def home1(request):
     context={
         'threads':threads,
         'user_profile':user_profile,
-        'profile1':profile1,
+            
     }
     return render(request,"message.html", context)
