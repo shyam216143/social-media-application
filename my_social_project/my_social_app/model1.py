@@ -75,14 +75,14 @@ class Countries(models.Model):
 #     is_superuser = models.BooleanField(default=False)
 #     is_active = models.BooleanField(default=False)
 
-class Tags(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    date_created = models.DateTimeField(auto_created=True)
-    date_last_modified = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=64)
-    tag_use_counter = models.IntegerField(default=0)
-
-    class Meta:
-        managed = False
-        db_table = 'tags'
+# class Tags(models.Model):
+#     id = models.BigAutoField(primary_key=True)
+#     date_created = models.DateTimeField(auto_created=True)
+#     date_last_modified = models.DateTimeField(auto_now_add=True)
+#     name = models.CharField(max_length=64)
+#     tag_use_counter = models.IntegerField(default=0)
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'tags'
 

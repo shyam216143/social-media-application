@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User
-from .model1 import Countries,Tags
+from .models import User,Tags
+from .model1 import Countries
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
