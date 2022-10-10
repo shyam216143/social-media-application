@@ -81,8 +81,18 @@ class Countries(models.Model):
 #     date_last_modified = models.DateTimeField(auto_now_add=True)
 #     name = models.CharField(max_length=64)
 #     tag_use_counter = models.IntegerField(default=0)
-#
+
 #     class Meta:
 #         managed = False
 #         db_table = 'tags'
 
+# class Tags(models.Model):
+#     id = models.BigAutoField(primary_key=True)
+#     date_created = models.DateTimeField(blank=True, null=True)
+#     date_last_modified = models.DateTimeField(blank=True, null=True)
+#     name = models.CharField(unique=True, max_length=64)
+#     tag_use_counter = models.IntegerField()
+# #
+#     class Meta:
+#         managed = False
+#         db_table = 'tags'

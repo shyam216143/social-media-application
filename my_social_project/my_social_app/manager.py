@@ -1,9 +1,9 @@
 from django.contrib.auth.base_user import BaseUserManager
-from pkg_resources import _
+# from pkg_resources import _
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, email, password, password2=None, first_name=None, last_name=None,**extra_fields):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -11,6 +11,7 @@ class MyUserManager(BaseUserManager):
         if not email:
             raise ValueError('Users must have an email address')
         email = self.normalize_email(email)
+        extra_fields.setdefault('is_active', True)
 
         user = self.model(
             email=email,
@@ -32,9 +33,9 @@ class MyUserManager(BaseUserManager):
         extra_fields.setdefault('is_admin', True)
 
         if extra_fields.get('is_staff') is not True:
-            raise ValueError(_('super user must have is_staff=True'))
+            raise ValueError(('super user must have is_staff=True'))
         if extra_fields.get('is_superuser') is not True:
-            raise ValueError(_('super user must have is_superuser=True'))
+            raise ValueError(('super user must have is_superuser=True'))
 
         return self.create_user(email, password, **extra_fields)
 

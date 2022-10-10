@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -51,30 +52,94 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
-
-#
-# class Posts(models.Model):
-#     id = models.BigAutoField(primary_key=True)
-#     comment_count = models.IntegerField(default=0)
-#     content = models.TextField(max_length=4096, blank=True, null=True)
-#     date_created = models.DateTimeField(auto_now_add=True)
-#     date_last_modified = models.DateTimeField(blank=True, null=True)
-#     is_type_share = models.BooleanField(default=False)  # This field type is a guess.
-#     like_count = models.IntegerField(default=0)
-#     post_photo = models.ImageField(upload_to='image', blank=True, null=True)
-#     share_count = models.IntegerField(default=0)
-#     author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True, null=True)
-#     shared_post = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
-
-
-class Tags(models.Model):
+class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
-    date_created = models.DateTimeField(auto_created=True)
-    date_last_modified = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=64)
+    comment_count = models.IntegerField(blank=True, null=True)
+    content = models.CharField(max_length=4096, blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_last_modified = models.DateTimeField(blank=True, null=True)
+    is_type_share = models.BooleanField(default=True)  # This field type is a guess.
+    like_count = models.IntegerField(default=0,blank=True, null=True)
+    post_photo = models.CharField(max_length=255, blank=True, null=True)
+    share_count = models.IntegerField(default=0,blank=True, null=True)
+    author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True, null=True)
+    shared_post = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self) :
+        return [self.content]
+
+
+
+class Tag(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_last_modified = models.DateTimeField(blank=True, null=True)
+    name = models.CharField(unique=True, max_length=64)
     tag_use_counter = models.IntegerField(default=0)
+    def __str__(self) :
+        return [self.name]
 
-    class Meta:
-        managed = False
-        db_table = 'tags'
 
+class FollowUsers(models.Model):
+    followed = models.ForeignKey('User', on_delete=models.CASCADE,related_name="Following")
+    follower = models.ForeignKey('User', on_delete=models.CASCADE,related_name="Follower")
+
+    def __str__(self) :
+        return [self.followed + self.followers]
+
+
+
+
+
+class PostLike(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    liker = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    def __str__(self) :
+        return [self.post]
+
+
+class PostTag(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
+
+  
+    def __str__(self) :
+      return [self.tag]
+
+class Comment(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    content = models.CharField(max_length=1024, blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_last_modified = models.DateTimeField(blank=True, null=True)
+    like_count = models.IntegerField(default=0,blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self) :
+      return [self.content]
+
+
+class CommentLikes(models.Model):
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
+    liker = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self) :
+      return [self.comment]
+
+
+class Notification(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_last_modified = models.DateTimeField(blank=True, null=True)
+    date_updated = models.DateTimeField(blank=True, null=True)
+    is_read = models.TextField(blank=True, null=True)  # This field type is a guess.
+    is_seen = models.TextField(blank=True, null=True)  # This field type is a guess.
+    type = models.CharField(max_length=255)
+    owning_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, blank=True, null=True)
+    owning_post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='receiver')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='sender')
+
+    def __str__(self) :
+      return [self.id]

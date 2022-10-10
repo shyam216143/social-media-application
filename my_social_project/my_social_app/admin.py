@@ -1,12 +1,19 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User,Tags
+from .models import User,FollowUsers,Tag,Post,PostLike,PostTag,Comment,Notification,CommentLikes
 from .model1 import Countries
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-
+admin.site.register(Tag)
+admin.site.register(FollowUsers)
+admin.site.register(Post)
+admin.site.register(PostLike)
+admin.site.register(PostTag)
+admin.site.register(Comment)
+admin.site.register(Notification)
+admin.site.register(CommentLikes)
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     # form = UserChangeForm
@@ -46,4 +53,4 @@ admin.site.register(User, UserAdmin)
 # unregister the Group model from admin.
 
 admin.site.register(Countries)
-admin.site.register(Tags)
+
