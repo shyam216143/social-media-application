@@ -1,5 +1,8 @@
 from django.urls import path
 
+from my_social_app.Views.ForgotPasswordView import SendPasswordResetEmailView
+from my_social_app.Views.PasswordResetThroughEmail import UserPasswordResetView
+
 from .Views.ChangepasswordView import UserChangePasswordView
 
 from .Views.LoginView import UserLoginView
@@ -16,5 +19,7 @@ urlpatterns = [
     path('profile/', UserProfileView.as_view(), name='profile'),
     path('change-password/', UserChangePasswordView.as_view(), name='change-password'),
     path('change-email/', ChangeEmailView.as_view(), name='change-email'),
+    path('forgot_password_send_email/', SendPasswordResetEmailView.as_view(), name='forgot_password_send_email'),
+    path('reset-password/<str:uid>/<str:token>/', UserPasswordResetView.as_view(), name='forgot_password_send_email'),
 
 ]
