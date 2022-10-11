@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User,FollowUsers,Tag,Post,PostLike,PostTag,Comment,Notification,CommentLikes
+from .models import User, FollowUsers, Tag, Post, PostLike, PostTag, Comment, Notification, CommentLikes
 from .model1 import Countries
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -14,6 +14,8 @@ admin.site.register(PostTag)
 admin.site.register(Comment)
 admin.site.register(Notification)
 admin.site.register(CommentLikes)
+
+
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     # form = UserChangeForm
@@ -27,12 +29,12 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         ('user Credentials', {'fields': ('email', 'password')}),
         ('Personal info', {'fields': (
-            'username', 'first_name', 'last_name', 'cover_photo','profile_photo', 'current_city', 'edu_institution',
-            'follower_count', 'following_count', 'gender', 'hometown', 'intro', 'workplace', 'country')}),
+            'username', 'first_name', 'last_name', 'cover_photo', 'profile_photo', 'current_city', 'edu_institution',
+            'follower_count', 'following_count', 'gender', 'hometown', 'intro', 'workplace','country')}),
         ('Permissions', {'fields': (
             'is_admin', 'is_staff', 'is_superuser', 'is_active', 'role', 'account_verified', 'email_verified',
             'enabled')}),
-        ('Important Dates', {'fields': ('date_last_modified','join_date','updated_at','created_at')})
+        ('Important Dates', {'fields': ('date_last_modified', 'join_date', 'updated_at', 'created_at')})
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -53,4 +55,3 @@ admin.site.register(User, UserAdmin)
 # unregister the Group model from admin.
 
 admin.site.register(Countries)
-

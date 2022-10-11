@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserProfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0011_alter_countries_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0012_alter_user_country.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0013_remove_countries_name.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0014_countries_name.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0015_remove_countries_calling_code_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0016_alter_user_country.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/LoginView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/LoginView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0019_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0019_tags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/model1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_project/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +48,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/mphs/DjangoRestApiProject/SocialMediaProject/SocialMediaApp/views.py"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -60,5 +75,26 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="updated social media_app123" />
     <option name="LAST_COMMIT_MESSAGE" value="updated social media_app123" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UserProfile.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UserProfile.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

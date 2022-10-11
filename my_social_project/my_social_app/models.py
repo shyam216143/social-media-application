@@ -1,5 +1,6 @@
 from email.policy import default
 from django.db import models
+from django_countries.fields import CountryField
 
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
@@ -39,7 +40,7 @@ class User(AbstractUser):
     updated_at = models.DateTimeField(default=timezone.now)
     role = models.CharField(max_length=32)
     workplace = models.CharField(max_length=128, blank=True, null=True)
-    country = models.ForeignKey(Countries, models.DO_NOTHING, blank=True, null=True)
+    country = models.CharField(max_length=128, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

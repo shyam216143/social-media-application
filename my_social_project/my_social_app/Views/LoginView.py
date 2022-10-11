@@ -2,8 +2,9 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
+import json
 
-from my_social_app.serializers import UserLoginSerializer
+from ..serializers import UserLoginSerializer
 from ..renderers import UserRenderer  #error handling
 from django.contrib.auth import authenticate
 from ..models import User
@@ -24,6 +25,8 @@ class UserLoginView(APIView):
     renderer_classes = [UserRenderer]
 
     def post(self, request, format=None):
+        queryset= User.objects.filter(email=request.data.get('email'))
+        print(queryset)
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             email = serializer.data.get('email')
@@ -34,8 +37,10 @@ class UserLoginView(APIView):
                 print(user, "user details")
                 user = User.objects.get(email=user)
                 print(user.first_name, ": After user details")
+                data= User.objects.get(email=email)
+                print(type(data))
 
-                return Response({'token': token, 'user_id': user.id, 'user_name': user.username, 'email': user.email,
+                return Response({'token': token, "body":serializer.data,
                                  'msg': "login success"}, status=HTTP_200_OK)
             return Response({'errors': {"non field_errors are occured": ['password or email Is not valid']}},
                             status=HTTP_404_NOT_FOUND)

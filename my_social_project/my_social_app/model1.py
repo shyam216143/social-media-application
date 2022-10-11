@@ -1,16 +1,13 @@
 from django.db import models
+from django_countries.fields import CountryField
 
 
 class Countries(models.Model):
     id = models.BigAutoField(primary_key=True)
-    calling_code = models.CharField(max_length=4, blank=True, null=True)
-    country_code = models.CharField(max_length=3, blank=True, null=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_last_modified = models.DateTimeField(blank=True, null=True)
-    name = models.CharField(unique=True, max_length=64)
 
-    class Meta:
-        db_table = 'countries'
+    name = CountryField()
+
+
 
 
 #
