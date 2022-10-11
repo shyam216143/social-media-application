@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'my_social_app',
-    'django_countries'
+   
 ]
 
 MIDDLEWARE = [

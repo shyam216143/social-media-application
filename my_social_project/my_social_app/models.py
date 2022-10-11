@@ -1,13 +1,13 @@
 from email.policy import default
 from django.db import models
-from django_countries.fields import CountryField
+
 
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
 from .manager import MyUserManager
-from .model1 import Countries
+
 
 GENDER_CHOICES = (
     ('1', 'None'),

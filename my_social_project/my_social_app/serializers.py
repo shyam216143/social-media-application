@@ -130,3 +130,69 @@ class ProfileSerializer(ModelSerializer):
         fields = ['username', 'first_name', 'last_name', 'intro', 'hometown', 'current_city', 'workplace',
                   'edu_institution',
                   'birth_date', 'gender', "country"]
+
+
+
+
+
+class UserChangePasswordSerializer(ModelSerializer):
+    password = serializers.CharField(max_length=225, style={'input_type': 'password'}, write_only=True)
+    password2 = serializers.CharField(max_length=225, style={'input_type': 'password2'}, write_only=True)
+    oldpassword = serializers.CharField(max_length=225, style={'input_type': 'oldpassword'}, write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['password', 'password2','oldpassword']
+
+    def validate(self, attrs):
+        password = attrs.get('password')
+        password2 = attrs.get('password2')
+        oldpassword = attrs.get('oldpassword')
+        
+        user = self.context.get('user')
+        
+        print(user.check_password(oldpassword))
+        
+        if user.check_password(oldpassword)==False:
+            
+            raise serializers.ValidationError("old password is not matched with existing password, enter correct existing password")
+            
+        if password != password2:
+            raise serializers.ValidationError("password and confirmed Password not matched")
+        user.set_password(password)
+        user.save()
+        return attrs
+
+
+
+
+class UserChangeEmailSerializer(ModelSerializer):
+    password = serializers.CharField(max_length=225, style={'input_type': 'password'}, write_only=True)
+    newEmail=serializers.CharField(max_length=225, style={'input_type': 'newEmail'}, write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['newEmail', 'password']
+
+    def validate(self, attrs):
+        password = attrs.get('password')
+        newEmail = attrs.get('newEmail')
+        
+        
+        
+        user = self.context.get('user')
+        
+        oldEmail=user.email
+        print(oldEmail)
+        if oldEmail is not None:
+            if  User.objects.filter(email=newEmail).exists()==False:
+                if user.check_password(password)==True:
+                    user.email=newEmail
+                    user.save()
+                   
+                
+            else:
+                raise serializers.ValidationError('Entered email is already Exists, please enter new one')
+        else:
+            raise serializers.ValidationError('Your Old Email is not valid')
+        return attrs
