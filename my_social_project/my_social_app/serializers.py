@@ -6,6 +6,8 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import EmailMessage, send_mail
 from my_social_project.settings import EMAIL_HOST_USER
+
+
 class UserRegisterationsSerializer(ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
     print("hello")
@@ -34,7 +36,8 @@ class UserLoginSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'first_name', 'last_name', 'username']
+        fields = ['email', 'password']
+        # , 'password', 'first_name', 'last_name', 'username','id'
 
 
 # class ProfileInfoSerializer(ModelSerializer):
@@ -75,6 +78,7 @@ class UserLoginSerializer(ModelSerializer):
 
 class ProfileInfoSerializer(ModelSerializer):
     username = serializers.CharField(max_length=225, style={'input_type': 'username'}, write_only=True)
+    # id = serializers.CharField(max_length=225, style={'input_type': 'id'}, write_only=True)
     first_name = serializers.CharField(max_length=225, style={'input_type': 'firstName'}, write_only=True)
     last_name = serializers.CharField(max_length=225, style={'input_type': 'lastName'}, write_only=True)
     intro = serializers.CharField(max_length=225, style={'input_type': 'intro'}, write_only=True)
@@ -87,7 +91,6 @@ class ProfileInfoSerializer(ModelSerializer):
 
     gender = serializers.CharField(max_length=225, style={'input_type': 'gender'}, write_only=True)
 
-   
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'intro', 'hometown', 'current_city', 'workplace',
@@ -127,12 +130,10 @@ class ProfileInfoSerializer(ModelSerializer):
 class ProfileSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'intro', 'hometown', 'current_city', 'workplace',
-                  'edu_institution',
-                  'birth_date', 'gender', "country"]
-
-
-
+        fields = ["id", "email", 'username', 'first_name', 'last_name', 'intro', 'hometown', 'current_city',
+                  'workplace',
+                  'edu_institution', 'profile_photo', 'cover_photo', 'role', 'follower_count', 'following_count',
+                  'birth_date', 'gender', "country", 'enabled', 'account_verified', 'email_verified', 'join_date']
 
 
 class UserChangePasswordSerializer(ModelSerializer):
@@ -142,21 +143,21 @@ class UserChangePasswordSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['password', 'password2','oldpassword']
+        fields = ['password', 'password2', 'oldpassword']
 
     def validate(self, attrs):
         password = attrs.get('password')
         password2 = attrs.get('password2')
         oldpassword = attrs.get('oldpassword')
-        
+
         user = self.context.get('user')
-        
+
         print(user.check_password(oldpassword))
-        
-        if user.check_password(oldpassword)==False:
-            
-            raise serializers.ValidationError("old password is not matched with existing password, enter correct existing password")
-            
+
+        if user.check_password(oldpassword) == False:
+            raise serializers.ValidationError(
+                "old password is not matched with existing password, enter correct existing password")
+
         if password != password2:
             raise serializers.ValidationError("password and confirmed Password not matched")
         user.set_password(password)
@@ -164,11 +165,9 @@ class UserChangePasswordSerializer(ModelSerializer):
         return attrs
 
 
-
-
 class UserChangeEmailSerializer(ModelSerializer):
     password = serializers.CharField(max_length=225, style={'input_type': 'password'}, write_only=True)
-    newEmail=serializers.CharField(max_length=225, style={'input_type': 'newEmail'}, write_only=True)
+    newEmail = serializers.CharField(max_length=225, style={'input_type': 'newEmail'}, write_only=True)
 
     class Meta:
         model = User
@@ -177,28 +176,23 @@ class UserChangeEmailSerializer(ModelSerializer):
     def validate(self, attrs):
         password = attrs.get('password')
         newEmail = attrs.get('newEmail')
-        
-        
-        
+
         user = self.context.get('user')
-        
-        oldEmail=user.email
+
+        oldEmail = user.email
         print(oldEmail)
         if oldEmail is not None:
-            if  User.objects.filter(email=newEmail).exists()==False:
-                if user.check_password(password)==True:
-                    user.email=newEmail
+            if User.objects.filter(email=newEmail).exists() == False:
+                if user.check_password(password) == True:
+                    user.email = newEmail
                     user.save()
-                   
-                
+
+
             else:
                 raise serializers.ValidationError('Entered email is already Exists, please enter new one')
         else:
             raise serializers.ValidationError('Your Old Email is not valid')
         return attrs
-
-
-
 
 
 class SendPasswordEmailResetSerializer(ModelSerializer):
@@ -222,14 +216,14 @@ class SendPasswordEmailResetSerializer(ModelSerializer):
 
             print('password Reset Link', link)
             # send email
-            body =  link
-           
+            body = link
+
             data = {
                 'subject': 'Reset Your password',
                 'body': body,
                 'to_email': user.email,
             }
-           
+
             email = EmailMessage(
                 subject=data['subject'],
                 body=data['body'],
@@ -237,15 +231,12 @@ class SendPasswordEmailResetSerializer(ModelSerializer):
                 to=[data['to_email']]
 
             )
-          
+
             email.send()
             return attrs
 
         else:
             raise ValidationError("Your are a not Registered User")
-
-
-
 
 
 class UserPasswordResetSerializer(ModelSerializer):
@@ -275,3 +266,11 @@ class UserPasswordResetSerializer(ModelSerializer):
         except DjangoUnicodeDecodeError as identifier:
             PasswordResetTokenGenerator().check_token(user, token)
             raise ValidationError('Token is Not Valid or Expired')
+
+
+class LoginDataSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        # fields = "__all__"
+        exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
+                   'is_superuser', 'is_active', 'groups', 'user_permissions','created_at','updated_at')
