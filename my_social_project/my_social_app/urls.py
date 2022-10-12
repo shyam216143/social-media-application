@@ -1,5 +1,7 @@
 from django.urls import path
 
+from .Views.ProfilePhotoView import UserProfilePhotoView
+
 from .Views.ForgotPasswordView import SendPasswordResetEmailView
 from .Views.PasswordResetThroughEmail import UserPasswordResetView
 
@@ -23,5 +25,6 @@ urlpatterns = [
     path('change-email/', ChangeEmailView.as_view(), name='change-email'),
     path('forgot_password_send_email/', SendPasswordResetEmailView.as_view(), name='forgot_password_send_email'),
     path('reset-password/<str:uid>/<str:token>/', UserPasswordResetView.as_view(), name='forgot_password_send_email'),
+    path('update/profile-photo/<int:id>/',UserProfilePhotoView.as_view(),name="profile-photo")
 
 ]
