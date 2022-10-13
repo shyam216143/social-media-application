@@ -1,6 +1,6 @@
 import profile
 from rest_framework.serializers import *
-from .models import User
+from .models import User, FollowUsers
 from rest_framework import serializers
 from django.utils.encoding import force_bytes, DjangoUnicodeDecodeError, smart_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -274,20 +274,27 @@ class LoginDataSerializer(ModelSerializer):
         model = User
         # fields = "__all__"
         exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
-                   'is_superuser', 'is_active', 'groups', 'user_permissions','created_at','updated_at')
-
-
-
+                   'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')
 
 
 class ProfilePhotoSerializer(ModelSerializer):
-    
     # profile_photo = serializers.ImageField(max_length=225, style={'input_type': 'profilePhoto'}, write_only=True)
     class Meta:
         model = User
         # fields = "__all__"
         exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
-                   'is_superuser', 'is_active', 'groups', 'user_permissions','created_at','updated_at')
+                   'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')
 
 
-             
+class FollowUsersSerializer(ModelSerializer):
+    class Meta:
+        model = FollowUsers
+        fields = ['follower', 'followed', ]
+
+
+class FollowerDataSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        # fields = "__all__"
+        exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
+                   'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')

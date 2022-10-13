@@ -11,7 +11,6 @@ from ..models import User
 class UserProfilePhotoView(APIView):
     renderer_classes = [UserRenderer]
     permission_classes = [IsAuthenticated]
-    print("1")
 
     def post(self, request, ):
         image = request.data['profile_photo']
@@ -21,4 +20,4 @@ class UserProfilePhotoView(APIView):
         serializer = ProfilePhotoSerializer(user)
         print(image)
         print(user)
-        return Response({'msg': "success", "body  ": serializer.data}, status=HTTP_400_BAD_REQUEST)
+        return Response({'msg': "success", "body  ": serializer.data}, status=HTTP_200_OK)

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .Views.CoverPhotoView import UserCoverPhotoView
+from .Views.FollowUserView import FollowUserView
 from .Views.ProfilePhotoView import UserProfilePhotoView
 
 from .Views.ForgotPasswordView import SendPasswordResetEmailView
@@ -27,6 +28,7 @@ urlpatterns = [
     path('forgot_password_send_email/', SendPasswordResetEmailView.as_view(), name='forgot_password_send_email'),
     path('reset-password/<str:uid>/<str:token>/', UserPasswordResetView.as_view(), name='forgot_password_send_email'),
     path('update/profile-photo/',UserProfilePhotoView.as_view(),name="profile-photo"),
-    path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo")
+    path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo"),
+    path('follow-user/', FollowUserView.as_view(), name="follow-user")
 
 ]
