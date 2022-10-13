@@ -8,17 +8,16 @@ from ..serializers import LoginDataSerializer, ProfilePhotoSerializer
 from ..models import User
 
 
-class UserProfilePhotoView(APIView):
+class UserCoverPhotoView(APIView):
     renderer_classes = [UserRenderer]
     permission_classes = [IsAuthenticated]
-    print("1")
 
-    def post(self, request, ):
-        image = request.data['profile_photo']
+    def post(self, request, format=None):
+        image = request.data['cover_photo']
         user = request.user
-        user.profile_photo = image
+        user.cover_photo = image
         user.save()
         serializer = ProfilePhotoSerializer(user)
         print(image)
         print(user)
-        return Response({'msg': "success", "body  ": serializer.data}, status=HTTP_400_BAD_REQUEST)
+        return Response({'msg': "success", "body": serializer.data}, status=HTTP_202_ACCEPTED)
