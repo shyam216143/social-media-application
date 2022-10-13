@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ProfiledataView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cookieDjangoProject/cookie_jwt_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../cookieDjangoProject/cookie_jwt_project/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/Couple-love-dp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/Couple-love-dp_9lsQqv0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download_556SYtF.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_4WtnbGq.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_HVkBdLN.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_RoJXsxk.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_akuEsuJ.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_fp4kbs0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_lq9dS4A.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_q8WomLf.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_2_ufeOJBm.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_3MIwjG3.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_Hydyyf9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_U42pAf4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_gbYorDw.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_rdqsQj8.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/FollowUserView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0013_alter_followusers_followed_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0014_alter_followusers_followed_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/LoginView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/LoginView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ProfilePhotoView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ProfilePhotoView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
     </list>
@@ -58,13 +77,28 @@
       <option name="project" value="LOCAL" />
       <updated>1665409755082</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated social media_app124">
+      <created>1665580425597</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665580425597</updated>
+    </task>
+    <task id="LOCAL-00003" summary="updated social media_app124">
+      <created>1665638451827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665638451827</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="updated social media_app123" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app123" />
+    <MESSAGE value="updated social media_app124" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app124" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

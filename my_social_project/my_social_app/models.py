@@ -1,13 +1,11 @@
 from email.policy import default
 from django.db import models
 
-
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
 from .manager import MyUserManager
-
 
 GENDER_CHOICES = (
     ('1', 'None'),
@@ -51,7 +49,8 @@ class User(AbstractUser):
     objects = MyUserManager()
 
     def __str__(self):
-        return self.email
+        return str(self.email)
+
 
 class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -60,15 +59,14 @@ class Post(models.Model):
     date_created = models.DateTimeField(blank=True, null=True)
     date_last_modified = models.DateTimeField(blank=True, null=True)
     is_type_share = models.BooleanField(default=True)  # This field type is a guess.
-    like_count = models.IntegerField(default=0,blank=True, null=True)
+    like_count = models.IntegerField(default=0, blank=True, null=True)
     post_photo = models.CharField(max_length=255, blank=True, null=True)
-    share_count = models.IntegerField(default=0,blank=True, null=True)
+    share_count = models.IntegerField(default=0, blank=True, null=True)
     author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True, null=True)
     shared_post = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
 
-    def __str__(self) :
-        return [self.content]
-
+    def __str__(self):
+        return str(self.content)
 
 
 class Tag(models.Model):
@@ -77,26 +75,24 @@ class Tag(models.Model):
     date_last_modified = models.DateTimeField(blank=True, null=True)
     name = models.CharField(unique=True, max_length=64)
     tag_use_counter = models.IntegerField(default=0)
-    def __str__(self) :
-        return [self.name]
+
+    def __str__(self):
+        return str(self.name)
 
 
 class FollowUsers(models.Model):
-    followed = models.ForeignKey('User', on_delete=models.CASCADE,related_name="Following")
-    follower = models.ForeignKey('User', on_delete=models.CASCADE,related_name="Follower")
+    followed = models.ForeignKey('User', on_delete=models.CASCADE, related_name="Following")
+    follower = models.ForeignKey('User', on_delete=models.CASCADE, related_name="Follower")
 
-    def __str__(self) :
-        return [self.followed + self.followers]
-
-
-
+    def __str__(self):
+        return str(self.followed)
 
 
 class PostLike(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
     liker = models.ForeignKey('User', on_delete=models.CASCADE)
 
-    def __str__(self) :
+    def __str__(self):
         return [self.post]
 
 
@@ -104,29 +100,29 @@ class PostTag(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
 
-  
-    def __str__(self) :
-      return [self.tag]
+    def __str__(self):
+        return [self.tag]
+
 
 class Comment(models.Model):
     id = models.BigAutoField(primary_key=True)
     content = models.CharField(max_length=1024, blank=True, null=True)
     date_created = models.DateTimeField(blank=True, null=True)
     date_last_modified = models.DateTimeField(blank=True, null=True)
-    like_count = models.IntegerField(default=0,blank=True, null=True)
+    like_count = models.IntegerField(default=0, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
-    def __str__(self) :
-      return [self.content]
+    def __str__(self):
+        return [self.content]
 
 
 class CommentLikes(models.Model):
-    comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     liker = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self) :
-      return [self.comment]
+    def __str__(self):
+        return [self.comment]
 
 
 class Notification(models.Model):
@@ -142,5 +138,5 @@ class Notification(models.Model):
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='receiver')
     sender = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='sender')
 
-    def __str__(self) :
-      return [self.id]
+    def __str__(self):
+        return [self.id]
