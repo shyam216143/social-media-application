@@ -85,7 +85,7 @@ class FollowUsers(models.Model):
     follower = models.ForeignKey('User', on_delete=models.CASCADE, related_name="Follower")
 
     def __str__(self):
-        return str(self.followed)
+        return str(self.follower)
 
 
 class PostLike(models.Model):
