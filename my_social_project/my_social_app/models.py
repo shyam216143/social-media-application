@@ -38,7 +38,7 @@ class User(AbstractUser):
     profile_photo = models.ImageField(upload_to='image', blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
-    role = models.CharField(max_length=32)
+    role = models.CharField(max_length=32 ,blank=True,null=True)
     workplace = models.CharField(max_length=128, blank=True, null=True)
     country = models.CharField(max_length=128, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
