@@ -16,6 +16,8 @@ from .Views.ProfiledataView import ProfileDataView
 
 from .Views.RegisterView import UserRegistration
 from .Views.UpdateInfoView import UpdateInfoView
+from .Views.UserFollowerList import UserFollowerListView
+from .Views.UserFollowingList import UserFollowingListView
 from .Views.UserProfile import UserProfileView
 from .Views.ChangeEmailView import ChangeEmailView
 
@@ -32,6 +34,7 @@ urlpatterns = [
     path('update/profile-photo/',UserProfilePhotoView.as_view(),name="profile-photo"),
     path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo"),
     path('follow-user/', FollowUserView.as_view(), name="follow-user"),
-    path('unfollow-user/', UnfollowUserView.as_view(), name="follow-user")
+    path('user/following/', UserFollowingListView.as_view(), name="follow-user"),
+    path('user/follower/', UserFollowerListView.as_view(), name="follow-user")
 
 ]
