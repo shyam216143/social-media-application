@@ -1,5 +1,7 @@
 import profile
 from rest_framework.serializers import *
+
+from .models import Tag, Post
 from .models import User, FollowUsers
 from rest_framework import serializers
 from django.utils.encoding import force_bytes, DjangoUnicodeDecodeError, smart_str
@@ -298,3 +300,17 @@ class FollowerDataSerializer(ModelSerializer):
         # fields = "__all__"
         exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
                    'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')
+
+
+class PostSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['post_photo',]
+
+
+class TagSerializer(ModelSerializer):
+    post = PostSerializer()
+
+    class Meta:
+        model = Tag
+        fields = ['name','post']

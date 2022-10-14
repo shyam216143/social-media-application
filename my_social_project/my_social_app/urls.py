@@ -1,5 +1,6 @@
 from django.urls import path
 
+from .Views.CreatePostView import CreatePostView
 from .Views.UnfollowUserView import UnfollowUserView
 
 from .Views.CoverPhotoView import UserCoverPhotoView
@@ -34,7 +35,9 @@ urlpatterns = [
     path('update/profile-photo/',UserProfilePhotoView.as_view(),name="profile-photo"),
     path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo"),
     path('follow-user/', FollowUserView.as_view(), name="follow-user"),
+    path('unfollow-user/', UnfollowUserView.as_view(), name="unfollow-user"),
     path('user/following/', UserFollowingListView.as_view(), name="follow-user"),
-    path('user/follower/', UserFollowerListView.as_view(), name="follow-user")
+    path('user/follower/', UserFollowerListView.as_view(), name="follow-user"),
+    path('user/createpost/', CreatePostView.as_view(), name="follow-user"),
 
 ]

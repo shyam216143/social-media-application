@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowerList.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowingList.py" afterDir="false" />
+    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="updated social media_app126">
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download_OVFAUo4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download_UMWOsxj.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/error-404-concept-landing-page_52683-13617.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images356" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images365" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_1_Wjd5haK.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_q79uXaf.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_8ZQUFIw.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_nI16LtF.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0016_remove_post_date_created_post_post_tags_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,15 +87,34 @@
       <option name="project" value="LOCAL" />
       <updated>1665667059987</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated social media_app126">
+      <created>1665730407967</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665730407967</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="updated social media_app123" />
     <MESSAGE value="updated social media_app124" />
     <MESSAGE value="updated social media_app125" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app125" />
+    <MESSAGE value="updated social media_app126" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app126" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -103,6 +133,16 @@
           <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UserProfile.py</url>
           <line>10</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ProfilePhotoView.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
