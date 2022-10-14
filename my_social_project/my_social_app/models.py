@@ -1,3 +1,4 @@
+import datetime
 from email.policy import default
 from django.db import models
 
@@ -56,8 +57,8 @@ class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
     comment_count = models.IntegerField(blank=True, null=True)
     content = models.CharField(max_length=4096, blank=True, null=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_last_modified = models.DateTimeField(blank=True, null=True)
+    date_created = models.DateTimeField(default=datetime.datetime.now() , )
+    date_last_modified = models.DateTimeField(default=datetime.datetime.now() )
     is_type_share = models.BooleanField(default=True)  # This field type is a guess.
     like_count = models.IntegerField(default=0, blank=True, null=True)
     post_photo = models.CharField(max_length=255, blank=True, null=True)
