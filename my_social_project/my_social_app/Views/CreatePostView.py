@@ -23,12 +23,31 @@ class CreatePostView(APIView):
         postTags = request.data['postTags']
         user=request.user
         print(user)
-        create_post= Post(post_photo=postPhoto,content=content,).save()
+        print(user.id)
+        create_post= Post(postPhoto=postPhoto,content=content,author=user)
+        create_post.save()
+        print(create_post)
         print(content)
         print(postPhoto)
         postTags= json.loads(postTags)
-        for i in postTags:
-            print(i["tagName"])
         print(postTags)
+        for i in postTags:
+            print(i["tagName"],"helo")
+            tag=Tag.objects.filter(name=i["tagName"]).exists()
+            print(tag)
+            if  not tag:
+                 create_tag=Tag(name=i["tagName"])
+                 create_tag.tagUseCounter=1
+                 create_tag.save()
+            else:
+                update_tag=Tag.objects.get(name=i["tagName"])     
+                update_tag.tagUseCounter=update_tag.tagUseCounter+1
+                update_tag.save()
+            post_tag=Tag.objects.get(name=i["tagName"]) 
+            create_post.postTags.add(post_tag.id)  
+            serializer= PostSerializer(create_post)
+            create_post.save()
+        print(postTags)
+        print(serializer.data)
 
-        return Response({"msg":"success"}, status=HTTP_200_OK)
+        return Response(serializer.data, status=HTTP_200_OK)

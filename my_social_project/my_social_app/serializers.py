@@ -305,12 +305,18 @@ class FollowerDataSerializer(ModelSerializer):
 class PostSerializer(ModelSerializer):
     class Meta:
         model = Post
-        fields = ['post_photo',]
+        fields = '__all__'
 
 
 class TagSerializer(ModelSerializer):
-    post = PostSerializer()
-
+   
     class Meta:
         model = Tag
-        fields = ['name','post']
+        fields = ['name','dateCreated','dateLastModified','tagUseCounter',]
+
+
+class GetTimelinePostDataSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = "__all__"
+        

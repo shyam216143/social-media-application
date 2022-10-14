@@ -52,19 +52,20 @@ class User(AbstractUser):
     def __str__(self):
         return str(self.email)
 
-
+ 
 class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
-    comment_count = models.IntegerField(blank=True, null=True)
+    commentCount = models.IntegerField(blank=True, null=True)
     content = models.CharField(max_length=4096, blank=True, null=True)
-    date_created = models.DateTimeField(default=datetime.datetime.now() , )
-    date_last_modified = models.DateTimeField(default=datetime.datetime.now() )
-    is_type_share = models.BooleanField(default=True)  # This field type is a guess.
-    like_count = models.IntegerField(default=0, blank=True, null=True)
-    post_photo = models.CharField(max_length=255, blank=True, null=True)
-    share_count = models.IntegerField(default=0, blank=True, null=True)
+    dateCreated = models.DateTimeField(default=timezone.now)
+    dateLastModified = models.DateTimeField(default=timezone.now)
+    isTypeShare = models.BooleanField(default=True)  # This field type is a guess.
+    likeCount = models.IntegerField(default=0, blank=True, null=True)
+    postPhoto = models.ImageField(upload_to='image', blank=True, null=True)
+    shareCount = models.IntegerField(default=0, blank=True, null=True)
     author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True, null=True)
-    shared_post = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
+    sharedPost = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
+    postTags = models.ManyToManyField('Tag')
 
     def __str__(self):
         return str(self.content)
@@ -72,10 +73,10 @@ class Post(models.Model):
 
 class Tag(models.Model):
     id = models.BigAutoField(primary_key=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_last_modified = models.DateTimeField(blank=True, null=True)
+    dateCreated = models.DateTimeField(default=timezone.now)
+    dateLastModified = models.DateTimeField(default=timezone.now)
     name = models.CharField(unique=True, max_length=64)
-    tag_use_counter = models.IntegerField(default=0)
+    tagUseCounter = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)

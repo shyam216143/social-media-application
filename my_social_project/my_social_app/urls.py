@@ -1,5 +1,9 @@
 from django.urls import path
 
+from my_social_app.Views.GetTagsView import GetTagsView
+
+from .Views.GetTimelinePosts import GetTimelinePostsview
+
 from .Views.CreatePostView import CreatePostView
 from .Views.UnfollowUserView import UnfollowUserView
 
@@ -39,5 +43,7 @@ urlpatterns = [
     path('user/following/', UserFollowingListView.as_view(), name="follow-user"),
     path('user/follower/', UserFollowerListView.as_view(), name="follow-user"),
     path('user/createpost/', CreatePostView.as_view(), name="follow-user"),
+    path('user1/', GetTimelinePostsview.as_view(), name="get-user-posts"),
+    path('tags/', GetTagsView.as_view(), name="get-used-tags"),
 
 ]
