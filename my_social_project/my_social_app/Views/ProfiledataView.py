@@ -17,13 +17,13 @@ class ProfileDataView(APIView):
         data = User.objects.get(id=id)
         print("hello",request.user.id)
         follower_exists= FollowUsers.objects.filter(follower=request.user.id,followed=id).exists()
-        print(follower_exists)
+        print(follower_exists,"exists or not")
         if data is not None:
             serializer1 = LoginDataSerializer(data, many=False)
             response = Response()
             response.data = {"data":serializer1.data,"follower_exists":follower_exists}
             response.followedByAuthUser = follower_exists
-            print(response.data["follower_exists"])
-            print(response.data["data"])
+            print(response.data["follower_exists"],"hjbehjyh")
+            print(response.data["data"],"ndkjvjl")
             return response
         return Response({"error": "not a valid id"}, status=HTTP_400_BAD_REQUEST)

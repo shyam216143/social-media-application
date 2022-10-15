@@ -24,8 +24,12 @@ class CreatePostView(APIView):
         user=request.user
         print(user)
         print(user.id)
-        create_post= Post(postPhoto=postPhoto,content=content,author=user)
+        user1=User.objects.filter(id=user.id).first()
+        print(user1,"user id is")
+        create_post= Post(postPhoto=postPhoto,content=content,author=user1)
+       
         create_post.save()
+        print("username is :",create_post.author.username)
         print(create_post)
         print(content)
         print(postPhoto)

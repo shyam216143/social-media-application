@@ -52,23 +52,6 @@ class User(AbstractUser):
     def __str__(self):
         return str(self.email)
 
- 
-class Post(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    commentCount = models.IntegerField(blank=True, null=True)
-    content = models.CharField(max_length=4096, blank=True, null=True)
-    dateCreated = models.DateTimeField(default=timezone.now)
-    dateLastModified = models.DateTimeField(default=timezone.now)
-    isTypeShare = models.BooleanField(default=True)  # This field type is a guess.
-    likeCount = models.IntegerField(default=0, blank=True, null=True)
-    postPhoto = models.ImageField(upload_to='image', blank=True, null=True)
-    shareCount = models.IntegerField(default=0, blank=True, null=True)
-    author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True, null=True)
-    sharedPost = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
-    postTags = models.ManyToManyField('Tag')
-
-    def __str__(self):
-        return str(self.content)
 
 
 class Tag(models.Model):
@@ -80,27 +63,43 @@ class Tag(models.Model):
 
     def __str__(self):
         return str(self.name)
+ 
+class Post(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    commentCount = models.IntegerField(default=0)
+    content = models.CharField(max_length=4096, blank=True, null=True)
+    dateCreated = models.DateTimeField(default=timezone.now)
+    dateLastModified = models.DateTimeField(default=timezone.now)
+    isTypeShare = models.BooleanField(default=False)  # This field type is a guess.
+    likeCount = models.IntegerField(default=0)
+    postPhoto = models.ImageField(upload_to='image', blank=True, null=True)
+    shareCount = models.IntegerField(default=0)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    sharedPost = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
+    postTags = models.ManyToManyField(Tag)
+
+
 
 
 class FollowUsers(models.Model):
-    followed = models.ForeignKey('User', on_delete=models.CASCADE, related_name="Following")
-    follower = models.ForeignKey('User', on_delete=models.CASCADE, related_name="Follower")
+    followed = models.ForeignKey(User , on_delete=models.CASCADE, related_name="Following")
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Follower")
 
     def __str__(self):
         return str(self.follower)
 
 
 class PostLike(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    liker = models.ForeignKey('User', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    liker = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return [self.post]
 
 
 class PostTag(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     def __str__(self):
         return [self.tag]

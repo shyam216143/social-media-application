@@ -9,8 +9,8 @@ from ..renderers import UserRenderer
 
 
 class UserFollowerListView(APIView):
-    def get(self, request,page=None, size=None):
-        follower_data = FollowUsers.objects.filter(followed=request.user.id)
+    def get(self, request,id=None,page=None, size=None):
+        follower_data = FollowUsers.objects.filter(followed=id)
         print(follower_data)
         lis = []
         current_page = request.GET['page']
@@ -32,6 +32,7 @@ class UserFollowerListView(APIView):
                     "followedByAuthUser": followedByuser
 
                 }
+                print(followedByuser)
                 lis.append(temp)
             i=1+i
 

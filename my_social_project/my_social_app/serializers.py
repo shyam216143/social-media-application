@@ -315,8 +315,34 @@ class TagSerializer(ModelSerializer):
         fields = ['name','dateCreated','dateLastModified','tagUseCounter',]
 
 
+
+
 class GetTimelinePostDataSerializer(ModelSerializer):
     class Meta:
         model = Post
         fields = "__all__"
         
+
+
+
+class GetPostDataByIdSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+from drf_writable_nested.serializers import WritableNestedModelSerializer
+
+
+class getuserPostSerializer(WritableNestedModelSerializer):
+    # author= LoginDataSerializer(allow_null=True)
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        # fields = "__all__"
+        exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
+                   'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')

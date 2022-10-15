@@ -11,6 +11,6 @@ from ..models import FollowUsers, Post, Tag, User
 
 class GetTagsView(APIView):
     def get(self,request):
-        querysert= Tag.objects.all()
-        serializer=TagSerializer(querysert, many=True)
+        queryset= Tag.objects.all()
+        serializer=TagSerializer(queryset, many=True)
         return Response(serializer.data)

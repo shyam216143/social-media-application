@@ -9,11 +9,13 @@ from ..renderers import UserRenderer
 
 
 class UserFollowingListView(APIView):
-    def get(self, request,page=None, size=None):
-        following_data = FollowUsers.objects.filter(follower=request.user.id)
+    def get(self, request,id=None,page=None, size=None):
+        
         lis = []
         current_page = request.GET['page']
         require_size = request.GET['size']
+        
+        following_data = FollowUsers.objects.filter(follower=id)
         print(current_page)
         print(require_size)
         i = 1

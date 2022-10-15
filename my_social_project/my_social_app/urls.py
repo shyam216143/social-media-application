@@ -1,6 +1,10 @@
 from django.urls import path
+from my_social_app.Views.GetPostByTagName import GetPostsBytagView
+from my_social_app.Views.GetPostsByIdView import GetPostsByIdView
 
 from my_social_app.Views.GetTagsView import GetTagsView
+from my_social_app.Views.GetUserPostsView import GetUserPostsview
+from my_social_app.Views.UserSearchView import UserSearchView
 
 from .Views.GetTimelinePosts import GetTimelinePostsview
 
@@ -40,10 +44,15 @@ urlpatterns = [
     path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo"),
     path('follow-user/', FollowUserView.as_view(), name="follow-user"),
     path('unfollow-user/', UnfollowUserView.as_view(), name="unfollow-user"),
-    path('user/following/', UserFollowingListView.as_view(), name="follow-user"),
-    path('user/follower/', UserFollowerListView.as_view(), name="follow-user"),
+    path('user/following/<int:id>/', UserFollowingListView.as_view(), name="follow-user"),
+    path('user/follower/<int:id>/', UserFollowerListView.as_view(), name="follow-user"),
     path('user/createpost/', CreatePostView.as_view(), name="follow-user"),
     path('user1/', GetTimelinePostsview.as_view(), name="get-user-posts"),
     path('tags/', GetTagsView.as_view(), name="get-used-tags"),
+    path('users/posts/', GetUserPostsview.as_view(), name="get-user-posts"),
+    path('posts/<int:id>/', GetPostsByIdView.as_view(), name="get-user-posts"),
+    path('posts/tags/<str:name>/', GetPostsBytagView.as_view(), name="get-user-posts"),
+    path('users/search/', UserSearchView.as_view(), name="get-user-posts"),
+
 
 ]
