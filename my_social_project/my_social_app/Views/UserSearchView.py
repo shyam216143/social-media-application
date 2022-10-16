@@ -23,18 +23,22 @@ class UserSearchView(APIView):
         if users is not None:
             for user in users:
                 if int(current_page) - 1 < i < int(require_size) + 1:
-                    followedByAuthUser=FollowUsers.objects.filter(followed=current_user).exists()
-                    print(followedByAuthUser)
-                    serializer=UserSerializer(user)
-                    print(serializer.data)
-                    temp={
-                        "user":serializer.data,
-                        "followedByAuthUser":followedByAuthUser
+                    print(current_user,"current user")
+                    print(user,"display user")
+                    if user !=current_user:
 
-                    }
-                    lis.append(temp)
+                        followedByAuthUser=FollowUsers.objects.filter(follower=current_user, followed=user).exists()
+                        print(followedByAuthUser,"is following")
+                        serializer=UserSerializer(user)
+                        print(serializer.data)
+                        temp={
+                            "user":serializer.data,
+                            "followedByAuthUser":followedByAuthUser
+
+                        }
+                        lis.append(temp)
                 i=i+1    
-            print(lis)
+            # print(lis)
             return Response(lis, status=HTTP_200_OK)
         return Response('error occered',status=HTTP_400_BAD_REQUEST)    
 
