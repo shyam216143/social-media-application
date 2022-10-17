@@ -40,12 +40,13 @@ class ExistingPostUpdate(APIView):
                 update_tag.tagUseCounter = update_tag.tagUseCounter - 1
                 update_post.postTags.set('')
                 update_tag.save()
-                update_post.save()
+
 
                 print(update_post)
                 print(update_tag)
         serializer = GetPostDataByIdSerializer(update_post)
         return Response(serializer.data, status=HTTP_200_OK)
+
 
         #     tag_exists = Tag.objects.filter(name=tag['tagName']).exists()
         #     if not tag_exists:
