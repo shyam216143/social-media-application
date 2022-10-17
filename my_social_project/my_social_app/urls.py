@@ -1,14 +1,21 @@
 from django.urls import path
-from my_social_app.Views.GetPostByTagName import GetPostsBytagView
-from my_social_app.Views.GetPostsByIdView import GetPostsByIdView
 
-from my_social_app.Views.GetTagsView import GetTagsView
-from my_social_app.Views.GetUserPostsView import GetUserPostsview
-from my_social_app.Views.UserSearchView import UserSearchView
+from .Views.ExistingPostUpdate import ExistingPostUpdate
+from .Views.GetPostByTagName import GetPostsBytagView
+from .Views.GetPostCommentView import GetPostCommentView
+from .Views.GetPostsByIdView import GetPostsByIdView
+
+from .Views.GetTagsView import GetTagsView
+from .Views.GetUserPostsView import GetUserPostsview
+from .Views.PostCreateComment import PostCreateCommentView
+from .Views.PostLikeView import PostLikeView
+from .Views.PostUnLikeView import PostUnlikeView
+from .Views.UserSearchView import UserSearchView
 
 from .Views.GetTimelinePosts import GetTimelinePostsview
 
 from .Views.CreatePostView import CreatePostView
+from .Views.PostPhotoDelete import UserPostDelete
 from .Views.UnfollowUserView import UnfollowUserView
 
 from .Views.CoverPhotoView import UserCoverPhotoView
@@ -53,6 +60,11 @@ urlpatterns = [
     path('posts/<int:id>/', GetPostsByIdView.as_view(), name="get-user-posts"),
     path('posts/tags/<str:name>/', GetPostsBytagView.as_view(), name="get-user-posts"),
     path('users/search/', UserSearchView.as_view(), name="get-user-posts"),
-
+    path('posts/<int:post_id>/photo/delete/', UserPostDelete.as_view(), name="get-user-posts"),
+    path('posts/<int:post_id>/update/', ExistingPostUpdate.as_view(), name="get-post_update"),
+    path('posts/<int:post_id>/like/', PostLikeView.as_view(), name="post_like"),
+    path('posts/<int:post_id>/unlike/', PostUnlikeView.as_view(), name="post_like"),
+    path('posts/<int:post_id>/comments/create/', PostCreateCommentView.as_view(), name="post_like"),
+    path('posts/<int:post_id>/comments/', GetPostCommentView.as_view(), name="post_like"),
 
 ]

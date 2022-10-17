@@ -37,7 +37,7 @@ class User(AbstractUser):
     profile_photo = models.ImageField(upload_to='image', blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
-    role = models.CharField(max_length=32 ,blank=True,null=True)
+    role = models.CharField(max_length=32, blank=True, null=True)
     workplace = models.CharField(max_length=128, blank=True, null=True)
     country = models.CharField(max_length=128, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
@@ -53,7 +53,6 @@ class User(AbstractUser):
         return str(self.email)
 
 
-
 class Tag(models.Model):
     id = models.BigAutoField(primary_key=True)
     dateCreated = models.DateTimeField(default=timezone.now)
@@ -63,7 +62,8 @@ class Tag(models.Model):
 
     def __str__(self):
         return str(self.name)
- 
+
+
 class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
     commentCount = models.IntegerField(default=0)
@@ -72,17 +72,18 @@ class Post(models.Model):
     dateLastModified = models.DateTimeField(default=timezone.now)
     isTypeShare = models.BooleanField(default=False)  # This field type is a guess.
     likeCount = models.IntegerField(default=0)
-    postPhoto = models.ImageField(upload_to='image', blank=True, null=True)
+    postPhoto = models.ImageField(upload_to='image', blank=True, null=True, default='image/images_1.jpeg')
     shareCount = models.IntegerField(default=0)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     sharedPost = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
-    postTags = models.ManyToManyField(Tag)
+    postTags = models.ManyToManyField(Tag, blank=True)
 
-
+    def __str__(self):
+        return str(self.author)
 
 
 class FollowUsers(models.Model):
-    followed = models.ForeignKey(User , on_delete=models.CASCADE, related_name="Following")
+    followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Following")
     follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Follower")
 
     def __str__(self):
@@ -94,7 +95,7 @@ class PostLike(models.Model):
     liker = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return [self.post]
+        return str(self.post)+" Post is Liked By  "+str(self.liker)
 
 
 class PostTag(models.Model):
@@ -102,20 +103,20 @@ class PostTag(models.Model):
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     def __str__(self):
-        return [self.tag]
+        return str(self.tag)
 
 
 class Comment(models.Model):
     id = models.BigAutoField(primary_key=True)
     content = models.CharField(max_length=1024, blank=True, null=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_last_modified = models.DateTimeField(blank=True, null=True)
+    date_created = models.DateTimeField(default=timezone.now,blank=True, null=True)
+    date_last_modified = models.DateTimeField(default=timezone.now,blank=True, null=True)
     like_count = models.IntegerField(default=0, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
-        return [self.content]
+        return  str(self.author)+" added a comment on post of user "+str(self.post)
 
 
 class CommentLikes(models.Model):

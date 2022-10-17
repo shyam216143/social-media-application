@@ -3,13 +3,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import FollowUsers, Post, User
+from ..models import FollowUsers, Post, User, PostLike
 from ..serializers import FollowUsersSerializer, FollowerDataSerializer, GetTimelinePostDataSerializer
 from ..renderers import UserRenderer
 
 
 class GetTimelinePostsview(APIView):
-    def get(self, request,page=None, size=None):
+    def get(self, request, page=None, size=None):
         follower_data = FollowUsers.objects.filter(followed=request.user.id)
         print(follower_data)
         lis = []
@@ -24,13 +24,13 @@ class GetTimelinePostsview(APIView):
                 posts = Post.objects.filter(author=following.follower.id)
                 for post in posts:
                     timelineposts_serializer = GetTimelinePostDataSerializer(post)
+                    likedbyUser = PostLike.objects.filter(post=post, liker=request.user).exists()
 
                     temp = {
-                        "likedByAuthUser": False,
+                        "likedByAuthUser": likedbyUser,
                         "post": timelineposts_serializer.data
                     }
                     lis.append(temp)
-            i=1+i
+            i = 1 + i
 
-        return Response(lis,status=HTTP_200_OK)
-     
+        return Response(lis, status=HTTP_200_OK)

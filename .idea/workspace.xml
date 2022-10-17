@@ -2,19 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="updated social media_app126">
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download_OVFAUo4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/download_UMWOsxj.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/error-404-concept-landing-page_52683-13617.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images356" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images365" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_1_Wjd5haK.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_3_q79uXaf.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_8ZQUFIw.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images_nI16LtF.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0016_remove_post_date_created_post_post_tags_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images313" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images314" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images354" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images360" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images363" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images364" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images364_QbWMPPJ" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images365_Jl7YQ3b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images367" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/unnamed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/unnamed_rgQghcB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostCommentView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCreateComment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikeView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostPhotoDelete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostUnLikeView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0042_alter_post_postphoto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0043_alter_post_posttags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostByTagName.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostByTagName.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetTimelinePosts.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetTimelinePosts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />

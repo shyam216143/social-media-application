@@ -1,7 +1,7 @@
 import profile
 from rest_framework.serializers import *
 
-from .models import Tag, Post
+from .models import Tag, Post, Comment
 from .models import User, FollowUsers
 from rest_framework import serializers
 from django.utils.encoding import force_bytes, DjangoUnicodeDecodeError, smart_str
@@ -309,20 +309,9 @@ class PostSerializer(ModelSerializer):
 
 
 class TagSerializer(ModelSerializer):
-   
     class Meta:
         model = Tag
-        fields = ['name','dateCreated','dateLastModified','tagUseCounter',]
-
-
-
-
-class GetTimelinePostDataSerializer(ModelSerializer):
-    class Meta:
-        model = Post
-        fields = "__all__"
-        
-
+        fields = ['name', 'dateCreated', 'dateLastModified', 'tagUseCounter', ]
 
 
 class GetPostDataByIdSerializer(ModelSerializer):
@@ -331,14 +320,12 @@ class GetPostDataByIdSerializer(ModelSerializer):
         fields = "__all__"
 
 
-from drf_writable_nested.serializers import WritableNestedModelSerializer
-
-
-class getuserPostSerializer(WritableNestedModelSerializer):
+class getuserPostSerializer(ModelSerializer):
     # author= LoginDataSerializer(allow_null=True)
     class Meta:
         model = Post
         fields = "__all__"
+
 
 class UserSerializer(ModelSerializer):
     class Meta:
@@ -346,3 +333,29 @@ class UserSerializer(ModelSerializer):
         # fields = "__all__"
         exclude = ('password', 'last_login', 'date_joined', 'date_last_modified', 'join_date', 'is_admin', 'is_staff',
                    'is_superuser', 'is_active', 'groups', 'user_permissions', 'created_at', 'updated_at')
+
+
+class GetTimelinePostDataSerializer(ModelSerializer):
+    author = UserSerializer()
+    postTags = TagSerializer(many=True)
+
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+class GetPostDataByIdSerializer(ModelSerializer):
+    author = UserSerializer()
+    postTags = TagSerializer(many=True)
+
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+class commentserializer(ModelSerializer):
+    author = UserSerializer()
+
+    class Meta:
+        model = Comment
+        exclude = ('post',)
