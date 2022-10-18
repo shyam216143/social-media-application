@@ -109,14 +109,14 @@ class PostTag(models.Model):
 class Comment(models.Model):
     id = models.BigAutoField(primary_key=True)
     content = models.CharField(max_length=1024, blank=True, null=True)
-    date_created = models.DateTimeField(default=timezone.now,blank=True, null=True)
-    date_last_modified = models.DateTimeField(default=timezone.now,blank=True, null=True)
-    like_count = models.IntegerField(default=0, blank=True, null=True)
+    dateCreated = models.DateTimeField(default=timezone.now,blank=True, null=True)
+    dateLastModified = models.DateTimeField(default=timezone.now,blank=True, null=True)
+    likeCount = models.IntegerField(default=0, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
-        return  str(self.author)+" added a comment on post of user "+str(self.post)
+        return  str(self.author)+" added a comment for "+ str(self.post)
 
 
 class CommentLikes(models.Model):
@@ -124,21 +124,21 @@ class CommentLikes(models.Model):
     liker = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return [self.comment]
+        return "("+str(self.comment)+") for that comment user : "+str(self.liker)+" is liked"
 
 
 class Notification(models.Model):
     id = models.BigAutoField(primary_key=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_last_modified = models.DateTimeField(blank=True, null=True)
-    date_updated = models.DateTimeField(blank=True, null=True)
-    is_read = models.TextField(blank=True, null=True)  # This field type is a guess.
-    is_seen = models.TextField(blank=True, null=True)  # This field type is a guess.
+    dateCreated = models.DateTimeField(default=timezone.now)
+    dateLastModified = models.DateTimeField(blank=True, null=True)
+    dateUpdated  = models.DateTimeField(blank=True, null=True)
+    isRead = models.BooleanField(default=False)  # This field type is a guess.
+    isSeen = models.BooleanField(default=False)  # This field type is a guess.
     type = models.CharField(max_length=255)
-    owning_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, blank=True, null=True)
-    owning_post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
+    owningComment = models.ForeignKey(Comment, on_delete=models.CASCADE, blank=True, null=True)
+    owningPost = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='receiver')
     sender = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='sender')
 
     def __str__(self):
-        return [self.id]
+        return str(self.id)

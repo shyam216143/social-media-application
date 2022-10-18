@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike, Comment
+from ..models import Tag, Post, PostLike, Comment, CommentLikes
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
 
@@ -32,7 +32,7 @@ class GetPostCommentView(APIView):
         for comment in comments:
             if int(current_page) - 1 < i < int(require_size) + 1:
                 serializer=commentserializer(comment)
-                likedbyUser = PostLike.objects.filter(post=post_data, liker=request.user).exists()
+                likedbyUser = CommentLikes.objects.filter(comment=comment, liker=request.user).exists()
 
                 temp = {
                     "likedByAuthUser": likedbyUser,

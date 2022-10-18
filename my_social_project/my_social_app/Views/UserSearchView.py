@@ -17,7 +17,7 @@ class UserSearchView(APIView):
         require_size = request.GET['size']
         key = request.GET['key']
         lis=[]
-        users = User.objects.filter(username__contains=str(key) )|User.objects.filter(email__contains=key)
+        users = User.objects.filter(username__contains=str(key) )|User.objects.filter(email__contains=str(key))|User.objects.filter(first_name__contains=str(key) )|User.objects.filter(last_name__contains=str(key) )
         print(users)
         i=1
         if users is not None:

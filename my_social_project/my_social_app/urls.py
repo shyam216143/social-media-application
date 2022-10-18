@@ -1,14 +1,23 @@
 from django.urls import path
 
+from .Views.ExistingPostDeleteView import ExistingPostDelete
+from .Views.ExistingPostShareDelete import ExistingPostShareDelete
 from .Views.ExistingPostUpdate import ExistingPostUpdate
+from .Views.GetNotificationList import GetNotification
 from .Views.GetPostByTagName import GetPostsBytagView
 from .Views.GetPostCommentView import GetPostCommentView
 from .Views.GetPostsByIdView import GetPostsByIdView
 
 from .Views.GetTagsView import GetTagsView
 from .Views.GetUserPostsView import GetUserPostsview
+from .Views.PostCommentDeleteView import PostCommentDeleteView
+from .Views.PostCommentLike import PostCommentLikeView
+from .Views.PostCommentLikesListView import PostCommentLikesListView
+from .Views.PostCommentUnikeView import PostCommentUnikeView
 from .Views.PostCreateComment import PostCreateCommentView
 from .Views.PostLikeView import PostLikeView
+from .Views.PostLikesListView import PostLikesListView
+from .Views.PostShareCreate import PostShareCreteView
 from .Views.PostUnLikeView import PostUnlikeView
 from .Views.UserSearchView import UserSearchView
 
@@ -62,9 +71,18 @@ urlpatterns = [
     path('users/search/', UserSearchView.as_view(), name="get-user-posts"),
     path('posts/<int:post_id>/photo/delete/', UserPostDelete.as_view(), name="get-user-posts"),
     path('posts/<int:post_id>/update/', ExistingPostUpdate.as_view(), name="get-post_update"),
+    path('posts/<int:post_id>/delete/', ExistingPostDelete.as_view(), name="get-post_delete"),
+    path('posts/<int:post_id>/share/delete/', ExistingPostShareDelete.as_view(), name="get-post_delete"),
     path('posts/<int:post_id>/like/', PostLikeView.as_view(), name="post_like"),
+    path('posts/<int:post_id>/likes/', PostLikesListView.as_view(), name="post_like"),
     path('posts/<int:post_id>/unlike/', PostUnlikeView.as_view(), name="post_like"),
     path('posts/<int:post_id>/comments/create/', PostCreateCommentView.as_view(), name="post_like"),
-    path('posts/<int:post_id>/comments/', GetPostCommentView.as_view(), name="post_like"),
+    path('posts/<int:post_id>/comments/', GetPostCommentView.as_view(), name="get_post_comment"),
+    path('posts/comments/<int:commentId>/like/', PostCommentLikeView.as_view(), name="post_comment_like"),
+    path('posts/comments/<int:commentId>/unlike/', PostCommentUnikeView.as_view(), name="post_comment_unlike"),
+    path('posts/comments/<int:commentId>/likes/', PostCommentLikesListView.as_view(), name="post_comment_likes_list"),
+    path('posts/<int:post_id>/comments/<int:commentId>/delete/', PostCommentDeleteView.as_view(), name="post_comment_likes_list"),
+    path('posts/<int:post_id>/share/create/', PostShareCreteView.as_view(), name="post_comment_likes_list"),
+    path('notifications/', GetNotification.as_view(), name="post_comment_likes_list"),
 
 ]

@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike
+from ..models import Tag, Post, PostLike, FollowUsers, Notification
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
 
@@ -25,5 +25,10 @@ class PostLikeView(APIView):
         print(post_like)
         post_data.likeCount = post_data.likeCount + 1
         post_data.save()
+        followers_data = FollowUsers.objects.filter(followed=current_user)
+
+        new_notification = Notification(type='POST_LIKE', owningPost=post_data, sender=current_user,
+                                        receiver=post_data.author)
+        new_notification.save()
 
         return Response({"msg": "success"}, status=HTTP_200_OK)

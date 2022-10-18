@@ -1,7 +1,7 @@
 import profile
 from rest_framework.serializers import *
 
-from .models import Tag, Post, Comment
+from .models import Tag, Post, Comment, Notification
 from .models import User, FollowUsers
 from rest_framework import serializers
 from django.utils.encoding import force_bytes, DjangoUnicodeDecodeError, smart_str
@@ -359,3 +359,14 @@ class commentserializer(ModelSerializer):
     class Meta:
         model = Comment
         exclude = ('post',)
+
+
+class NotificationSerializer(ModelSerializer):
+    sender = UserSerializer()
+    receiver = UserSerializer()
+    owningComment = commentserializer()
+    owningPost = GetPostDataByIdSerializer()
+
+    class Meta:
+        model = Notification
+        fields = '__all__'

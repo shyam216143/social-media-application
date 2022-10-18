@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike, Comment
+from ..models import Tag, Post, PostLike, Comment, Notification
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
 
@@ -31,7 +31,9 @@ class PostCreateCommentView(APIView):
         post_data.commentCount=post_data.commentCount+1
         post_data.save()
         print("post content is ",post_comment)
-
+        new_notification = Notification(type='POST_COMMENT', owningPost=post_data, sender=current_user,
+                                        receiver=post_data.author)
+        new_notification.save()
         serializer = commentserializer(post_comment)
         print(serializer.data)
         temp = {

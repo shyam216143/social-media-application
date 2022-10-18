@@ -2,12 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images304" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/django_socialapp_media.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django_socialapp_media.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images362" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images363_CVmQK2L" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images364_1gvTSmy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images364_O8EAC8w" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images365_mLXOhtz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images367_uGbpXH2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images368" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostDeleteView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostShareDelete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetNotificationList.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentDeleteView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentLike.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentLikesListView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentUnikeView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikesListView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostShareCreate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0044_rename_like_count_comment_likecount_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0045_rename_datecreated_comment_date_created_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0046_rename_date_created_comment_datecreated_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0047_alter_notification_date_created_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/migrations/0048_rename_date_created_notification_datecreated_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostCommentView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostCommentView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCreateComment.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCreateComment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikeView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikeView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserSearchView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserSearchView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +58,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/mphs/PycharmProjects/django_socialapp/my_social_project/manage.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mphs/PycharmProjects/django_socialapp/my_social_project/manage.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="cookieDjangoProject" />
@@ -115,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666011474700</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updated social media_app127">
+      <created>1666016229705</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666016229705</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,11 +175,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UserProfile.py</url>
           <line>11</line>
           <option name="timeStamp" value="10" />
@@ -157,74 +185,14 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ProfilePhotoView.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/CreatePostView.py</url>
           <line>22</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/UpdateInfoView.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentUnikeView.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
