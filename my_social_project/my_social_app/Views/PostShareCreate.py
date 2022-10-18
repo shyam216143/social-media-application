@@ -1,15 +1,13 @@
-import json
 
-from django.shortcuts import render
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike, Comment, FollowUsers, Notification
+from ..models import  Post, PostLike, Comment, FollowUsers, Notification
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
 
-from ..serializers import commentserializer, PostSerializer, GetTimelinePostDataSerializer
+from ..serializers import  GetTimelinePostDataSerializer
 
 
 class PostShareCreteView(APIView):
@@ -40,30 +38,3 @@ class PostShareCreteView(APIView):
         serializer = GetTimelinePostDataSerializer(new_shared_post)
         return Response(serializer.data)
 
-        # # likedbyUser = PostLike.objects.filter(post=post_data, liker=request.user).exists()
-        # # print(likedbyUser)
-        # # share_post_comment = Comment(content=content, author=current_user, post=post_data)
-        # # share_post_comment.save()
-        # followers_data= FollowUsers.objects.filter(followed=current_user)
-        # print(followers_data)
-        # for follower_data in followers_data:
-        #     notification_data=Notification(sender=current_user,
-        #                                    receiver=follower_data,
-        #                                    owning_post=post_data,
-        #                                    type=content,
-        #                                   )
-        #     notification_data.save()
-        #
-        # post_data.commentCount=post_data.commentCount+1
-        # post_data.save()
-        # print("post content is ",post_comment)
-        #
-        # serializer = commentserializer(post_comment)
-        # print(serializer.data)
-        # temp = {
-        #     "likedByAuthUser": likedbyUser,
-        #     "comment": serializer.data
-        #
-        # }
-        #
-        # return Response(temp, status=HTTP_200_OK)
