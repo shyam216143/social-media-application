@@ -7,19 +7,14 @@ from ..serializers import GetPostDataByIdSerializer
 from ..models import Post
 
 
-
 class GetPostsByIdView(APIView):
-    def get(self, request,id=None):
-        
-        post_id=id
-        post= Post.objects.get(id=post_id)
+    def get(self, request, id=None):
+        post_id = id
+        post = Post.objects.get(id=post_id)
         print(post)
-        serializer=GetPostDataByIdSerializer(post)
+        serializer = GetPostDataByIdSerializer(post)
         temp = {
-                        "likedByAuthUser": False,
-                        "post": serializer.data
+            "likedByAuthUser": False,
+            "post": serializer.data
         }
-        return Response(temp,status=HTTP_200_OK)
-
-
- 
+        return Response(temp, status=HTTP_200_OK)

@@ -16,11 +16,13 @@ class GetPostsBytagView(APIView):
         print(require_size)
         tag = Tag.objects.get(name=name)
         print(tag)
-        i = 1
+        i = int(current_page)
+        largenumber = int(current_page) * int(require_size)
+        smaller_number = (int(current_page) - 1) * int(require_size)
         posts = Post.objects.filter(postTags=tag)
         print(posts)
         for post in posts:
-            if int(current_page) - 1 < i < int(require_size) + 1:
+            if (smaller_number - 1) < i < (largenumber + 1):
                 print(post)
                 serializer = GetPostDataByIdSerializer(post)
                 temp = {

@@ -10,6 +10,8 @@ from .Views.GetPostsByIdView import GetPostsByIdView
 
 from .Views.GetTagsView import GetTagsView
 from .Views.GetUserPostsView import GetUserPostsview
+from .Views.NotificationMarkAllReadView import NotificationMarkAllReadView
+from .Views.NotificationMarkAllSeenView import NotificationMarkAllSeenView
 from .Views.PostCommentDeleteView import PostCommentDeleteView
 from .Views.PostCommentLike import PostCommentLikeView
 from .Views.PostCommentLikesListView import PostCommentLikesListView
@@ -83,6 +85,8 @@ urlpatterns = [
     path('posts/comments/<int:commentId>/likes/', PostCommentLikesListView.as_view(), name="post_comment_likes_list"),
     path('posts/<int:post_id>/comments/<int:commentId>/delete/', PostCommentDeleteView.as_view(), name="post_comment_likes_list"),
     path('posts/<int:post_id>/share/create/', PostShareCreteView.as_view(), name="post_comment_likes_list"),
-    path('notifications/', GetNotification.as_view(), name="post_comment_likes_list"),
+    path('notifications/', GetNotification.as_view(), name="Notification_list"),
+    path('notifications/mark-seen/', NotificationMarkAllSeenView.as_view(), name="Notification_set_all_seen_True"),
+    path('notifications/mark-read/', NotificationMarkAllReadView.as_view(), name="Notification_set_all_read_True"),
 
 ]

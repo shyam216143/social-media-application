@@ -28,9 +28,11 @@ class GetPostCommentView(APIView):
 
         comments= Comment.objects.filter(post=post_data)
         lis=[]
-        i=1
+        i = int(current_page)
+        largenumber = int(current_page) * int(require_size)
+        smaller_number = (int(current_page) - 1) * int(require_size)
         for comment in comments:
-            if int(current_page) - 1 < i < int(require_size) + 1:
+            if (smaller_number - 1) < i < (largenumber + 1):
                 serializer=commentserializer(comment)
                 likedbyUser = CommentLikes.objects.filter(comment=comment, liker=request.user).exists()
 

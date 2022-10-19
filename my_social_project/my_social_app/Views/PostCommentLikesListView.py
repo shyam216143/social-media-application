@@ -28,10 +28,12 @@ class PostCommentLikesListView(APIView):
         comment_like_datas = CommentLikes.objects.filter(comment=comment_data)
         print(comment_like_datas)
         lis = []
-        i = 1
+        i = int(current_page)
+        largenumber = int(current_page) * int(require_size)
+        smaller_number = (int(current_page) - 1) * int(require_size)
         for comment_like_data in comment_like_datas:
             print(comment_like_data)
-            if int(current_page) - 1 < i < int(require_size) + 1:
+            if (smaller_number - 1) < i < (largenumber + 1):
                 print(123)
                 user = User.objects.get(id=comment_like_data.liker.id)
                 serializer = UserSerializer(user)
