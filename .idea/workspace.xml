@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/NotificationMarkAllReadView.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/NotificationMarkAllSeenView.py" afterDir="false" />
+    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="updated social media_app130">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/ExistingPostUpdate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetNotificationList.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetNotificationList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostByTagName.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostByTagName.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostCommentView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostCommentView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostsByIdView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetPostsByIdView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetTimelinePosts.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetTimelinePosts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetUserPostsView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetUserPostsView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentDeleteView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentDeleteView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentLikesListView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostCommentLikesListView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikesListView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/PostLikesListView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowerList.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowerList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowingList.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserFollowingList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserSearchView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/UserSearchView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666104700700</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated social media_app130">
+      <created>1666158890163</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666158890163</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +161,8 @@
     <MESSAGE value="updated social media_app127" />
     <MESSAGE value="updated social media_app128" />
     <MESSAGE value="updated social media_app129" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app129" />
+    <MESSAGE value="updated social media_app130" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated social media_app130" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
