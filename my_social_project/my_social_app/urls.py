@@ -3,6 +3,7 @@ from django.urls import path
 from .Views.ExistingPostDeleteView import ExistingPostDelete
 from .Views.ExistingPostShareDelete import ExistingPostShareDelete
 from .Views.ExistingPostUpdate import ExistingPostUpdate
+from .Views.GetFollowersDataView import GetFollowersData
 from .Views.GetNotificationList import GetNotification
 from .Views.GetPostByTagName import GetPostsBytagView
 from .Views.GetPostCommentView import GetPostCommentView
@@ -88,5 +89,6 @@ urlpatterns = [
     path('notifications/', GetNotification.as_view(), name="Notification_list"),
     path('notifications/mark-seen/', NotificationMarkAllSeenView.as_view(), name="Notification_set_all_seen_True"),
     path('notifications/mark-read/', NotificationMarkAllReadView.as_view(), name="Notification_set_all_read_True"),
+    path('<int:user_id>/followers_data/', GetFollowersData.as_view(), name="Notification_set_all_read_True"),
 
 ]

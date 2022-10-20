@@ -327,7 +327,7 @@ class getuserPostSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class UserSerializer(ModelSerializer):
+class   UserSerializer(ModelSerializer):
     class Meta:
         model = User
         # fields = "__all__"

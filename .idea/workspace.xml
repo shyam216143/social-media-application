@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="updated social media_app130">
+      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images352" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetFollowersDataView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_project/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_project/info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,6 +222,11 @@
           <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/GetNotificationList.py</url>
           <line>33</line>
           <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/GetFollowersDataView.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
