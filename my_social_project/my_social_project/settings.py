@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'my_social_app',
+    'channels',
    
 ]
 
@@ -80,7 +81,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'my_social_project.wsgi.application'
+ASGI_APPLICATION = 'my_social_project.asgi.application'
+# WSGI_APPLICATION = 'my_social_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -182,3 +184,14 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 PASSWORD_RESET_TIMEOUT = 900
+
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
