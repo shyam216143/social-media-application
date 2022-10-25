@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../cookieDjangoProject/.idea/cookieDjangoProject.iml" filepath="$PROJECT_DIR$/../cookieDjangoProject/.idea/cookieDjangoProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/django_socialapp_media.iml" filepath="$PROJECT_DIR$/.idea/django_socialapp_media.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/chat box/char_box_using-djnago/message_cloner/.idea/message_cloner.iml" filepath="$USER_HOME$/Desktop/chat box/char_box_using-djnago/message_cloner/.idea/message_cloner.iml" />
     </modules>
   </component>
 </project>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="updated social media_app130">
-      <change afterPath="$PROJECT_DIR$/my_social_project/media/image/images352" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_social_project/my_social_app/Views/GetFollowersDataView.py" afterDir="false" />
+    <list default="true" id="1f4afd80-7abc-48af-9b29-ed9b0dbda9e7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/django_socialapp_media.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django_socialapp_media.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Social_Media_Project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Social_Media_Project/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_project/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_project/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/my_social_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/my_social_project/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +38,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mphs/PycharmProjects/django_socialapp/my_social_project/manage.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mphs/Desktop/Basics/mp-training/tasks/Django work/my_Social_Media_Full_Project&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -144,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666158890163</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated social media_app130">
+      <created>1666255213414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666255213414</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,6 +234,11 @@
           <url>file://$PROJECT_DIR$/my_social_project/my_social_app/Views/GetFollowersDataView.py</url>
           <line>30</line>
           <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_social_project/my_social_app/urls.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="141" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

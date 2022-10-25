@@ -8,6 +8,7 @@
     <orderEntry type="jdk" jdkName="Python 3.8 (basic_env) (4)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cookieDjangoProject" />
+    <orderEntry type="module" module-name="message_cloner" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
