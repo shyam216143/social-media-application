@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, FollowUsers, Tag, Post, PostLike, PostTag, Comment, Notification, CommentLikes
+from .models import User, FollowUsers, Tag, Post, PostLike, PostTag, Comment, Notification, CommentLikes,Chatmessage
 
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -14,6 +14,7 @@ admin.site.register(PostTag)
 admin.site.register(Comment)
 admin.site.register(Notification)
 admin.site.register(CommentLikes)
+admin.site.register(Chatmessage)
 
 
 class UserAdmin(BaseUserAdmin):

@@ -142,3 +142,14 @@ class Notification(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+
+class Chatmessage(models.Model):
+    body = models.TextField()
+    msg_sender=models.ForeignKey(User, on_delete=models.CASCADE, related_name='msg_sender')
+    msg_receiver=models.ForeignKey(User, on_delete=models.CASCADE, related_name='msg_receiver')
+    seen= models.BooleanField(default=False )
+    date_created = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return str(self.body)
