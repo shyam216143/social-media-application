@@ -57,11 +57,11 @@ admin.site.register(User, UserAdmin)
 admin.site.register(ThreadChatMessage)
 
 
-class Messages1(admin.TabularInline):
+class ThreadChatMessage(admin.TabularInline):
     model = ThreadChatMessage
 
 class ThreadAdmin(admin.ModelAdmin):
-    inlines = [Messages1]
+    inlines = [ThreadChatMessage]
 
     # form = ThreadForm     
     class Meta:

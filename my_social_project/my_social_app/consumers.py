@@ -1,4 +1,5 @@
 import json
+from threading import Thread
 from tkinter import N
 from channels.consumer import SyncConsumer, AsyncConsumer
 from channels.exceptions import StopConsumer
@@ -6,7 +7,7 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from channels.db import database_sync_to_async
 
-from my_social_app.models import User
+from .models import Chatmessage, ThreadChatMessage, Threads, User
 
 
 class MySyncConsumer(SyncConsumer):
@@ -84,12 +85,17 @@ class ChatConsumer(AsyncConsumer):
             print('Error:: sent by  user is incorrect')
         if not send_to_user:
             print('Error:: send to user is incorrect')
+        get_2friends_thread= await self.get_users_thread(sent_by_user, send_to_user)
         
+        if get_2friends_thread:
 
+          print(get_2friends_thread,"threads id is ")
+        
+        await self.create_chat_message(get_2friends_thread, sent_by_user, msg)
         other_user_in_chat_room= f'user_chatroom_{send_to_id}'
         self_user= self.scope['user']  #not workink 
         # print(self_user, "self user is ")
-
+        
         response={
             "message": msg,
             "sent_by":sent_by_user.id
@@ -132,4 +138,18 @@ class ChatConsumer(AsyncConsumer):
         else:
             object= None
         return object        
-             
+    @database_sync_to_async 
+    def get_users_thread(self, sent_by_user,send_to_user):
+        queryset= Threads.objects.filter(first_person=send_to_user,second_person=sent_by_user)|Threads.objects.filter(first_person=sent_by_user,second_person=send_to_user)
+        print(queryset,"user data for message")
+        if queryset.exists():
+            object= queryset.first()
+            print(object.id, 'object')
+
+        else:
+            object= Threads.objects.create(first_person=sent_by_user,second_person=send_to_user)
+            object.save()
+        return object 
+    @database_sync_to_async
+    def create_chat_message(self,thread, sender, message):
+        ThreadChatMessage.objects.create(thread=thread ,user=sender, message=message).save()

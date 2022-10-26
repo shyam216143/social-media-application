@@ -146,10 +146,9 @@ class Notification(models.Model):
 
 
 class Chatmessage(models.Model):
-    body = models.TextField()
+    message = models.TextField()
     msg_sender=models.ForeignKey(User, on_delete=models.CASCADE, related_name='msg_sender')
     msg_receiver=models.ForeignKey(User, on_delete=models.CASCADE, related_name='msg_receiver')
-    seen= models.BooleanField(default=False )
     date_created = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return str(self.body)
@@ -163,8 +162,13 @@ class Threads(models.Model):
     timestamp= models.DateTimeField(auto_now_add=True)
     class Meta:
         unique_together =['first_person', 'second_person']
+     
 class ThreadChatMessage(models.Model):
     thread=models.ForeignKey(Threads, on_delete=models.CASCADE ,null=True, blank=True,related_name='chat_message_threads')       
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     message= models.TextField()
+    seen= models.BooleanField(default=False)
+
     timestamp= models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.user)

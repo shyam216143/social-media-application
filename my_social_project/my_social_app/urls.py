@@ -1,6 +1,8 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from .Views.GetChatMessagesListView import GetChatMessagesList
+
 from .Views.ExistingPostDeleteView import ExistingPostDelete
 from .Views.ExistingPostShareDelete import ExistingPostShareDelete
 from .Views.ExistingPostUpdate import ExistingPostUpdate
@@ -92,5 +94,6 @@ urlpatterns = [
     path('notifications/mark-read/', NotificationMarkAllReadView.as_view(), name="Notification_set_all_read_True"),
     path('<int:user_id>/followers_data/', GetFollowersData.as_view(), name="Notification_set_all_read_True"),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('chat_data/current_user/', GetChatMessagesList.as_view(), name='token_refresh'),
 
 ]

@@ -2,7 +2,7 @@ import profile
 from attr import fields
 from rest_framework.serializers import *
 
-from .models import Tag, Post, Comment, Notification,Chatmessage
+from .models import Tag, Post, Comment, Notification,Chatmessage, ThreadChatMessage, Threads
 from .models import User, FollowUsers
 from rest_framework import serializers
 from django.utils.encoding import force_bytes, DjangoUnicodeDecodeError, smart_str
@@ -377,4 +377,19 @@ class NotificationSerializer(ModelSerializer):
 class ChatMessageSerializer(ModelSerializer):
     class Meta:
         model =Chatmessage
+        fields='__all__'
+class ThreadSerializer(ModelSerializer):
+    first_person=UserSerializer()
+    second_person=UserSerializer()
+    class Meta:
+        model =Threads
+        fields = '__all__'
+
+
+
+class ChatThreadSerializer(ModelSerializer):
+    thread=ThreadSerializer()
+    user=UserSerializer()
+    class Meta:
+        model =ThreadChatMessage
         fields='__all__'
