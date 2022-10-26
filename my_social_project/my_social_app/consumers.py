@@ -46,11 +46,13 @@ class MySyncConsumer(SyncConsumer):
 
 
 class ChatConsumer(AsyncConsumer):
+
     async def websocket_connect(self, event):
         print("websocket is connected123..", event)
-        user= self.scope['user']
-        print('user')
-        chat_room= f'user_chatroom_{user.id}'
+      
+        user= self.scope['url_route']['kwargs']['user_id']
+        print(user)
+        chat_room= f'user_chatroom_{user}'
         self.chat_room= chat_room
         await self.channel_layer.group_add(
             chat_room,

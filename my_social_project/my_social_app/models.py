@@ -153,3 +153,18 @@ class Chatmessage(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return str(self.body)
+
+
+
+class Threads(models.Model):
+    first_person=models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True, related_name='threads_first_person')
+    second_person=models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True, related_name='threads_second_person')
+    updated_at=models.DateTimeField(auto_now=True)
+    timestamp= models.DateTimeField(auto_now_add=True)
+    class Meta:
+        unique_together =['first_person', 'second_person']
+class ThreadChatMessage(models.Model):
+    thread=models.ForeignKey(Threads, on_delete=models.CASCADE ,null=True, blank=True,related_name='chat_message_threads')       
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    message= models.TextField()
+    timestamp= models.DateTimeField(auto_now_add=True)

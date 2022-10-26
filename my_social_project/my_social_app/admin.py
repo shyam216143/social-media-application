@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, FollowUsers, Tag, Post, PostLike, PostTag, Comment, Notification, CommentLikes,Chatmessage
+from .models import User, FollowUsers, Tag, Post, PostLike, PostTag, Comment, Notification, CommentLikes,Chatmessage,ThreadChatMessage,Threads
 
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -54,4 +54,18 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
+admin.site.register(ThreadChatMessage)
 
+
+class Messages1(admin.TabularInline):
+    model = ThreadChatMessage
+
+class ThreadAdmin(admin.ModelAdmin):
+    inlines = [Messages1]
+
+    # form = ThreadForm     
+    class Meta:
+        model = Threads
+
+
+admin.site.register(Threads, ThreadAdmin)
