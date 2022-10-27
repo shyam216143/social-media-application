@@ -29,12 +29,47 @@ class UserRegisterationsSerializer(ModelSerializer):
         if password != password2:
             raise serializers.ValidationError("password and confirmed Password not matched")
         return attrs
-
+      
     def create(self, validate_date):
         print(validate_date, "validate data")
         return User.objects.create_user(**validate_date)
 
+class sendEmailForRegistration(ModelSerializer):
+     def validate(self, attrs):
+        email = attrs.get('email')
 
+        user = self.context.get('user')
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email=email)
+            uid = urlsafe_base64_encode(force_bytes(user.id))
+            print("encoded UID", uid)
+            token = PasswordResetTokenGenerator().make_token(user)
+            print("password Reset Token", token)
+            link = 'http://localhost:4200/reset-password/' + uid + '/' + token
+
+            print('password Reset Link', link)
+            # send email
+            body = link
+
+            data = {
+                'subject': 'Reset Your password',
+                'body': body,
+                'to_email': user.email,
+            }
+
+            email = EmailMessage(
+                subject=data['subject'],
+                body=data['body'],
+                from_email=EMAIL_HOST_USER,
+                to=[data['to_email']]
+
+            )
+
+            email.send()
+            return attrs
+
+        else:
+            raise ValidationError("Your are a not Registered User")
 class UserLoginSerializer(ModelSerializer):
     email = serializers.EmailField(max_length=255)
 
@@ -393,3 +428,31 @@ class ChatThreadSerializer(ModelSerializer):
     class Meta:
         model =ThreadChatMessage
         fields='__all__'
+
+
+
+
+
+class VerifyEmailSerializer(ModelSerializer):
+   
+
+    class Meta:
+        model = User
+        fields ='__all__'
+
+    def validate(self, attrs):
+        try:
+           
+            uid = self.context.get('uid')
+            token = self.context.get('token')
+            id = smart_str(urlsafe_base64_decode(uid))
+            user = User.objects.get(id=id)
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                raise ValidationError('Token is Not Valid or Expired')
+
+            user.email_verified=True
+            user.save()
+            return attrs
+        except DjangoUnicodeDecodeError as identifier:
+            PasswordResetTokenGenerator().check_token(user, token)
+            raise ValidationError('Token is Not Valid or Expired')

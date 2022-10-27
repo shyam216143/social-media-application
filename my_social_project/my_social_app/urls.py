@@ -1,6 +1,8 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from .Views.VerifyEmailView import VerifyEmailView
+
 from .Views.GetChatMessagesListView import GetChatMessagesList
 
 from .Views.ExistingPostDeleteView import ExistingPostDelete
@@ -62,6 +64,7 @@ urlpatterns = [
     path('change-email/', ChangeEmailView.as_view(), name='change-email'),
     path('forgot_password_send_email/', SendPasswordResetEmailView.as_view(), name='forgot_password_send_email'),
     path('reset-password/<str:uid>/<str:token>/', UserPasswordResetView.as_view(), name='forgot_password_send_email'),
+    path('verify-email/<str:uid>/<str:token>/', VerifyEmailView.as_view(), name='forgot_password_send_email'),
     path('update/profile-photo/',UserProfilePhotoView.as_view(),name="profile-photo"),
     path('update/cover-photo/', UserCoverPhotoView.as_view(), name="profile-photo"),
     path('follow-user/', FollowUserView.as_view(), name="follow-user"),
