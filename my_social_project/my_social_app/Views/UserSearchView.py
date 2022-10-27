@@ -1,5 +1,7 @@
 import json
 from urllib import request
+
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -17,9 +19,10 @@ class UserSearchView(APIView):
         require_size = request.GET['size']
         key = request.GET['key']
         lis = []
-        users = User.objects.filter(username__contains=str(key)) | User.objects.filter(
-            email__contains=str(key)) | User.objects.filter(first_name__contains=str(key)) | User.objects.filter(
-            last_name__contains=str(key))
+        users =  User.objects.filter(Q(username__contains=str(key)) | Q(email__contains=str(key)) | Q(first_name__contains=str(key))|Q(last_name__contains=str(key)))
+        # users = User.objects.filter(username__contains=str(key)) | User.objects.filter(
+        #     email__contains=str(key)) | User.objects.filter(first_name__contains=str(key)) | User.objects.filter(
+        #     last_name__contains=str(key))
         print(users)
         i = int(current_page)
         largenumber = int(current_page) * int(require_size)
