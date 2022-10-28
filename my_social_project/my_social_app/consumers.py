@@ -50,7 +50,6 @@ class ChatConsumer(AsyncConsumer):
 
     async def websocket_connect(self, event):
         print("websocket is connected123..", event)
-      
         user= self.scope['url_route']['kwargs']['user_id']
         print('user id is :',user)
         chat_room= f'user_chatroom_{user}'
@@ -77,8 +76,6 @@ class ChatConsumer(AsyncConsumer):
         # sent_by_id= sent_by.id
         # send_to_id= send_to.id
         print("send_to_id is: ",send_to_id,"sent by id is: ", sent_by_id)
-
-        
         if not msg:
             print('Error:: empty message')
             return False
@@ -89,16 +86,12 @@ class ChatConsumer(AsyncConsumer):
         if not send_to_user:
             print('Error:: send to user is incorrect')
         get_2friends_thread= await self.get_users_thread(sent_by_user, send_to_user)
-        
         if get_2friends_thread:
-
-          print(get_2friends_thread,"threads id is ")
-        
+            print(get_2friends_thread,"threads id is ")
         await self.create_chat_message(get_2friends_thread, sent_by_user, msg)
         other_user_in_chat_room= f'user_chatroom_{send_to_id}'
         print("other_user_in chat room:",other_user_in_chat_room)
-        self_user= self.scope['user']  #not workink 
-        # print(self_user, "self user is ")
+        self_user= self.scope['user']
         user= self.scope['url_route']['kwargs']['user_id']
         print('user id is :',user)
         response={
@@ -121,8 +114,7 @@ class ChatConsumer(AsyncConsumer):
                 'text':json.dumps(response)
             }
         )
-   
- 
+
     async def websocket_disconnect(self, event):
         print("websocket is disconnected..", event)
         raise StopConsumer()
