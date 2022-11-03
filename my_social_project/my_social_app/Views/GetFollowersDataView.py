@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike, Comment, FollowUsers, Notification, User
+from ..models import  FollowUsers,User
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
 
@@ -29,9 +29,6 @@ class GetFollowersData(APIView):
             serializer= UserSerializer(user_following_data)
             lis.append(serializer.data)
         for users_follower in users_followers:
-            print("bhvjkj")
-            print(user)
-            print(users_follower.follower)
             check_you_followed= FollowUsers.objects.filter(follower=user, followed=users_follower.follower).first()
             print("123")
             if check_you_followed is None:
