@@ -20,4 +20,4 @@ class UserCoverPhotoView(APIView):
         serializer = ProfilePhotoSerializer(user)
         print(image)
         print(user)
-        return Response({'msg': "success", "body": serializer.data}, status=HTTP_202_ACCEPTED)
+        return Response(serializer.data, status=HTTP_202_ACCEPTED)
