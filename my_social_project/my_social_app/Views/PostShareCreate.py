@@ -28,6 +28,8 @@ class PostShareCreteView(APIView):
         print(followers_data)
 
         new_shared_post.save()
+        new_shared_post.sharedPost=new_shared_post
+        new_shared_post.save()
         for follower_data in followers_data:
             new_notification = Notification(type='POST_SHARE', owningPost=new_shared_post, sender=current_user,
                                             receiver=follower_data.follower)

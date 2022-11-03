@@ -374,16 +374,24 @@ class   UserSerializer(ModelSerializer):
 class GetTimelinePostDataSerializer(ModelSerializer):
     author = UserSerializer()
     postTags = TagSerializer(many=True)
+    sharedPost=GetPostDataByIdSerializer()
 
     class Meta:
         model = Post
         fields = "__all__"
 
+class GetPostSerilizer(ModelSerializer):
+    author = UserSerializer()
+    postTags = TagSerializer(many=True)
+    sharedPost=GetTimelinePostDataSerializer()
 
+    class Meta:
+        model = Post
+        fields = "__all__"
 class GetPostDataByIdSerializer(ModelSerializer):
     author = UserSerializer()
     postTags = TagSerializer(many=True)
-
+    sharedPost=GetPostSerilizer()
     class Meta:
         model = Post
         fields = "__all__"
