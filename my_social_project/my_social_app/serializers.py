@@ -1,5 +1,4 @@
-import profile
-from attr import fields
+
 from rest_framework.serializers import *
 
 from .models import Tag, Post, Comment, Notification,Chatmessage, ThreadChatMessage, Threads

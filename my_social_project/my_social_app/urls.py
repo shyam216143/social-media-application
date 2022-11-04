@@ -5,57 +5,96 @@ from .Views.VerifyEmailView import VerifyEmailView
 
 from .Views.GetChatMessagesListView import GetChatMessagesList
 
-from .Views.ExistingPostDeleteView import ExistingPostDelete
-from .Views.ExistingPostShareDelete import ExistingPostShareDelete
-from .Views.ExistingPostUpdate import ExistingPostUpdate
-from .Views.GetFollowersDataView import GetFollowersData
-from .Views.GetNotificationList import GetNotification
-from .Views.GetPostByTagName import GetPostsBytagView
-from .Views.GetPostCommentView import GetPostCommentView
-from .Views.GetPostsByIdView import GetPostsByIdView
+# from .Views.ExistingPostDeleteView import ExistingPostDelete
+from post_app.Views.ExistingPostDeleteView import ExistingPostDelete
+# from .Views.ExistingPostShareDelete import ExistingPostShareDelete
+from post_app.Views.ExistingPostShareDelete import ExistingPostShareDelete
+# from .Views.ExistingPostUpdate import ExistingPostUpdate
+from post_app.Views.ExistingPostUpdate import ExistingPostUpdate
+# from .Views.GetFollowersDataView import GetFollowersData
+from user_credential.Views.GetFollowersDataView import GetFollowersData
+# from .Views.GetNotificationList import GetNotification
+from notification_app.Views.GetNotificationList import GetNotification
+# from .Views.GetPostByTagName import GetPostsBytagView
+from post_app.Views.GetPostByTagName import GetPostsBytagView
+# from .Views.GetPostCommentView import GetPostCommentView
+from post_comment_app.Views.GetPostCommentView import GetPostCommentView
+# from .Views.GetPostsByIdView import GetPostsByIdView
+from post_app.Views.GetPostsByIdView import GetPostsByIdView
 
-from .Views.GetTagsView import GetTagsView
-from .Views.GetUserPostsView import GetUserPostsview
+# from .Views.GetTagsView import GetTagsView
+from tag_app.Views.GetTagsView import GetTagsView
+# from .Views.GetUserPostsView import GetUserPostsview
+from post_app.Views.GetUserPostsView import GetUserPostsview
 from .Views.NotificationMarkAllReadView import NotificationMarkAllReadView
-from .Views.NotificationMarkAllSeenView import NotificationMarkAllSeenView
-from .Views.PostCommentDeleteView import PostCommentDeleteView
-from .Views.PostCommentLike import PostCommentLikeView
-from .Views.PostCommentLikesListView import PostCommentLikesListView
-from .Views.PostCommentUnikeView import PostCommentUnikeView
-from .Views.PostCreateComment import PostCreateCommentView
-from .Views.PostLikeView import PostLikeView
-from .Views.PostLikesListView import PostLikesListView
-from .Views.PostShareCreate import PostShareCreteView
-from .Views.PostUnLikeView import PostUnlikeView
-from .Views.UserSearchView import UserSearchView
+# from .Views.NotificationMarkAllSeenView import NotificationMarkAllSeenView
+from notification_app.Views.NotificationMarkAllSeenView import NotificationMarkAllSeenView
+# from .Views.PostCommentDeleteView import PostCommentDeleteView
+from post_comment_app.Views.PostCommentDeleteView import PostCommentDeleteView
+# from .Views.PostCommentLike import PostCommentLikeView
+from post_comment_app.Views.PostCommentLike import PostCommentLikeView
+# from .Views.PostCommentLikesListView import PostCommentLikesListView
+from post_comment_app.Views.PostCommentLikesListView import PostCommentLikesListView
+# from .Views.PostCommentUnikeView import PostCommentUnikeView
+from post_comment_app.Views.PostCommentUnikeView import PostCommentUnikeView
+# from .Views.PostCreateComment import PostCreateCommentView
+from post_comment_app.Views.PostCreateComment import PostCreateCommentView
+# from .Views.PostLikeView import PostLikeView
+from post_app.Views.PostLikeView import PostLikeView
+# from .Views.PostLikesListView import PostLikesListView
+from post_app.Views.PostLikesListView import PostLikesListView
+# from .Views.PostShareCreate import PostShareCreteView
+from post_app.Views.PostShareCreate import PostShareCreteView
+# from .Views.PostUnLikeView import PostUnlikeView
+from post_app.Views.PostUnLikeView import PostUnlikeView
+# from .Views.UserSearchView import UserSearchView
+from search_app.Views.UserSearchView import UserSearchView
 
-from .Views.GetTimelinePosts import GetTimelinePostsview
+# from .Views.GetTimelinePosts import GetTimelinePostsview
+from post_app.Views.GetTimelinePosts import GetTimelinePostsview
 
-from .Views.CreatePostView import CreatePostView
-from .Views.PostPhotoDelete import UserPostDelete
-from .Views.UnfollowUserView import UnfollowUserView
+# from .Views.CreatePostView import CreatePostView
+from post_app.Views.CreatePostView import CreatePostView
+# from .Views.PostPhotoDelete import UserPostDelete
+from post_app.Views.PostPhotoDelete import UserPostDelete
+# from .Views.UnfollowUserView import UnfollowUserView
+from Follow_Unfollow_app.Views.UnfollowUserView import UnfollowUserView
 
-from .Views.CoverPhotoView import UserCoverPhotoView
-from .Views.FollowUserView import FollowUserView
-from .Views.ProfilePhotoView import UserProfilePhotoView
+# from .Views.CoverPhotoView import UserCoverPhotoView
+from user_credential.Views.CoverPhotoView import UserCoverPhotoView
+# from .Views.FollowUserView import FollowUserView
+from Follow_Unfollow_app.Views.FollowUserView import FollowUserView
+# from .Views.ProfilePhotoView import UserProfilePhotoView
+from user_credential.Views.ProfilePhotoView import UserProfilePhotoView
 
-from .Views.ForgotPasswordView import SendPasswordResetEmailView
-from .Views.PasswordResetThroughEmail import UserPasswordResetView
+# from .Views.ForgotPasswordView import SendPasswordResetEmailView
+from user_credential.Views.ForgotPasswordView import SendPasswordResetEmailView
+# from .Views.PasswordResetThroughEmail import UserPasswordResetView
+from user_credential.Views.PasswordResetThroughEmail import UserPasswordResetView
 
-from .Views.ChangepasswordView import UserChangePasswordView
+# from .Views.ChangepasswordView import UserChangePasswordView
+from user_credential.Views.ChangepasswordView import UserChangePasswordView
 
-from .Views.LoginView import UserLoginView
-from .Views.ProfiledataView import ProfileDataView
+# from .Views.LoginView import UserLoginView
+from user_credential.Views.LoginView import UserLoginView
 
-from .Views.RegisterView import UserRegistration
-from .Views.UpdateInfoView import UpdateInfoView
-from .Views.UserFollowerList import UserFollowerListView
-from .Views.UserFollowingList import UserFollowingListView
+# from .Views.ProfiledataView import ProfileDataView
+from user_credential.Views.ProfiledataView import ProfileDataView
+
+# from .Views.RegisterView import UserRegistration
+from user_credential.Views.RegisterView import UserRegistration
+# from .Views.UpdateInfoView import UpdateInfoView
+from user_credential.Views.UpdateInfoView import UpdateInfoView
+# from .Views.UserFollowerList import UserFollowerListView
+from Follow_Unfollow_app.Views.UserFollowerList import UserFollowerListView
+# from .Views.UserFollowingList import UserFollowingListView
+from Follow_Unfollow_app.Views.UserFollowingList import UserFollowingListView
 from .Views.UserProfile import UserProfileView
-from .Views.ChangeEmailView import ChangeEmailView
+# from .Views.ChangeEmailView import ChangeEmailView
+from user_credential.Views.ChangeEmailView import ChangeEmailView
 
 urlpatterns = [
-    path('register/', UserRegistration.as_view(), name='register'),
+    path('register/', UserRegistration.as_view(), name='register_in_user_credential'),
     path('login/', UserLoginView.as_view(), name='login'),
     path('update/', UpdateInfoView.as_view(), name='update'),
     path('profile/', UserProfileView.as_view(), name='profile'),

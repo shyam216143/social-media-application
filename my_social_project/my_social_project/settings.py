@@ -49,6 +49,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'my_social_app',
+    'user_credential',
+    'serializers_data',
+    'Follow_Unfollow_app',
+    'post_app',
+    'tag_app',
+    'search_app',
+    'post_comment_app',
+    'notification_app',
     'channels'
   
    

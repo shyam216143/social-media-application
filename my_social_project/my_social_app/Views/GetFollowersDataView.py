@@ -40,11 +40,18 @@ class GetFollowersData(APIView):
                     serialize= ChatThreadSerializer(chat_message)
                     lis1.append(serialize.data)
             length=len(lis1)-1
-            print("list last value is: ",lis1[length]['message'])    
+            last_message=''
+            last_timestamp=''
+            if length>0:
+
+               print("list last value is: ",lis1[length]['message'])  
+               last_message=lis1[length]['message']
+               last_timestamp=lis1[length]['timestamp']
+
             temp={
                 'user':serializer.data,
-                'last_message':lis1[length]['message'],
-                'time_stamp':lis1[length]['timestamp']
+                'last_message':last_message,
+                'time_stamp':last_timestamp
             }
             
             lis.append(temp)

@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04c715a2-cff1-452d-897c-a1208e38c3b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/my_social_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_app/Views/UserSearchView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_app/Views/UserSearchView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_social_app/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_app/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_app/Views/GetFollowersDataView.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_app/Views/GetFollowersDataView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_app/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_social_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_social_project/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,14 +23,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/mphs/PycharmProjects/django_socialapp/my_social_project/manage.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mphs/PycharmProjects/django_socialapp/my_social_project/manage.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="mams" type="PythonConfigurationType" factoryName="Python">
       <module name="my_social_project" />
