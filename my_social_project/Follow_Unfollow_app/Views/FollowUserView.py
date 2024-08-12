@@ -15,7 +15,6 @@ class FollowUserView(APIView):
             followed_user = User.objects.get(id=request.data['followed'])
             follower_user = User.objects.get(id=request.data['follower'])
             user = FollowUsers.objects.filter(followed=followed_user, follower=follower_user).first()
-            print(user)
             if user is None:
                 follow = FollowUsers(followed=followed_user,follower=follower_user).save()
                 follower_user.following_count= follower_user.following_count+1

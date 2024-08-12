@@ -15,7 +15,6 @@ class ProfileDataView(APIView):
 
     def post(self, request, id=None):
         data = User.objects.get(id=id)
-        print("hello",request.user.id)
         follower_exists= FollowUsers.objects.filter(follower=request.user.id,followed=id).exists()
         print(follower_exists,"exists or not")
         if data is not None:

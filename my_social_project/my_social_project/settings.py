@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt',
     'corsheaders',
     'rest_framework',
     'my_social_app',
@@ -99,10 +99,21 @@ ASGI_APPLICATION = 'my_social_project.asgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'social_media_db',
+        'USER': 'root',
+        'PASSWORD': '123123',
+        'HOST': '127.0.0.1',
+        'PORT': 3306
+    },
+
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 CORS_ALLOW_ALL_ORIGINS = True
 REST_FRAMEWORK = {
 

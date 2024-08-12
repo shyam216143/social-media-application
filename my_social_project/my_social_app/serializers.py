@@ -13,7 +13,6 @@ from my_social_project.settings import EMAIL_HOST_USER
 
 class UserRegisterationsSerializer(ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
-    print("hello")
 
     class Meta:
         model = User

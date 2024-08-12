@@ -6,7 +6,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework_simplejwt.tokens import UntypedToken
-from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
 from my_social_app.models import User
 from channels.middleware import BaseMiddleware
 from channels.auth import AuthMiddlewareStack
@@ -18,8 +17,6 @@ from django.conf import settings
 def get_user(validated_token):
     try:
         user = get_user_model().objects.get(id=validated_token["user_id"])
-        # return get_user_model().objects.get(id=toke_id)
-        print(f"{user}")
         return user
    
     except User.DoesNotExist:

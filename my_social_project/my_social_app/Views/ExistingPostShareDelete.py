@@ -1,21 +1,13 @@
-import json
-
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
 
-from ..models import Tag, Post, PostLike, Comment, CommentLikes, User
-from ..renderers import UserRenderer
-from rest_framework.permissions import IsAuthenticated
-
-from ..serializers import commentserializer, UserSerializer
+from ..models import Tag, Post, PostLike, Comment, CommentLikes
 
 
 class ExistingPostShareDelete(APIView):
-    def post(self, request, post_id):
+    def post(self, post_id):
         post_id = post_id
-        print(post_id)
         post_data = Post.objects.get(id=post_id)
         post_likes = PostLike.objects.select_related('post').filter(post=post_data)
         for post_like in post_likes:

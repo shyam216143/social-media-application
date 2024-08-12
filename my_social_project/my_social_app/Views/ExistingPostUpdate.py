@@ -1,6 +1,4 @@
 import json
-
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
@@ -8,9 +6,7 @@ from rest_framework.status import *
 from ..models import Tag, Post
 from ..renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
-
-from ..models import FollowUsers, User
-from ..serializers import PostSerializer, TagSerializer, GetPostDataByIdSerializer
+from ..serializers import GetPostDataByIdSerializer
 
 
 class ExistingPostUpdate(APIView):
@@ -19,29 +15,16 @@ class ExistingPostUpdate(APIView):
 
     def post(self, request, post_id=None):
         update_post = Post.objects.get(id=post_id)
-        print(update_post)
         content = request.data['content']
-        print(content)
-
         postPhoto = request.data['postPhoto']
-        print(postPhoto)
-        print(type(postPhoto))
-
         postTags = request.data['postTags']
-        print(postTags)
-
         update_post.content = content
-
         if postPhoto != 'undefined':
-            print("123")
             update_post.postPhoto = postPhoto
-
         update_post.save()
         postTags = json.loads(postTags)
-        print(postTags)
 
         for tag in postTags:
-            print("143")
             if tag['action'] == 'add':
                 tag_exists = Tag.objects.filter(name=tag['tagName'])
                 if tag_exists.exists():
@@ -72,4 +55,3 @@ class ExistingPostUpdate(APIView):
 
         serializer = GetPostDataByIdSerializer(update_post)
         return Response(serializer.data, status=HTTP_200_OK)
-
